@@ -3,3 +3,4 @@ log/
 cache/
 lib/vendor/symfony/
 lib/vendor/Zend/
+plugins/.*
