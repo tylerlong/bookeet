@@ -1,0 +1,111 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: site, action: home }
+
+book_new:
+  url: /bn
+  param: { module: book, action: new }
+book_create:
+  url: /bc
+  param: { module: book, action: create }
+
+edition_new:
+  url: /en
+  param: { module: edition, action: new }
+edition_create:
+  url: /ec
+  param: { module: edition, action: create }
+edition_languages:
+  url: /elanguages_:id
+  param: { module: edition, action: languages }
+
+translation_show:
+  url:  /t_:id
+  param: { module: translation, action: show }
+translation_edit:
+  url:  /te_:id
+  param: { module: translation, action: edit }
+translation_new:
+  url:  /tn_:id
+  param: { module: translation, action: new }
+translation_update:
+  url:  /tu_:id
+  param: { module: translation, action: update }
+translation_create:
+  url:  /tc
+  param: { module: translation, action: create }
+translation_read:
+  url:  /tr_:id
+  param: { module: translation, action: read }
+translation_id:
+  url:  /tid_:edition/:language
+  param:  { module: translation, action: id }
+translation_url:
+  url:  /turl_:edition/:language
+  param:  { module: translation, action: url }
+translation_delete:
+  url:  /td_:id
+  param: { module: translation, action: delete }
+
+chapter_show:
+  url:  /c_:id
+  param: { module: chapter, action: show }
+chapter_edit:
+  url:  /ce_:id
+  param: { module: chapter, action: edit }
+chapter_new:
+  url:  /cn_:id
+  param: { module: chapter, action: new }
+chapter_update:
+  url:  /cu_:id
+  param: { module: chapter, action: update }
+chapter_create:
+  url:  /cc
+  param: { module: chapter, action: create }
+chapter_delete:
+  url:  /cd_:id
+  param: { module: chapter, action: delete }
+
+section_show:
+  url:  /s_:id
+  param: { module: section, action: show }
+section_edit:
+  url:  /se_:id
+  param: { module: section, action: edit }
+section_new:
+  url:  /sn_:id
+  param: { module: section, action: new }
+section_update:
+  url:  /su_:id
+  param: { module: section, action: update }
+section_create:
+  url:  /sc
+  param: { module: section, action: create }
+section_delete:
+  url:  /sd_:id
+  param: { module: section, action: delete }
+
+
+# generic rules
+# please, remove them by adding more specific rules
+static:
+  url: /:action.html
+  param: { module: site, action: action }
+
+user_actions:
+  url: /user/:action
+  param: { module: user }
+moderator_actions:
+  url: /moderator/:action
+  param: { module: moderator }
+util_actions:
+  url: /util/:action
+  param: { module: util }
+
+default_index:
+  url:   /:module
+  param: { action: index }

@@ -1,0 +1,178 @@
+/* 
+    Created on : Aug 12, 2010, 7:29:16 AM
+    Author     : Peter Long  http://peterlong.info
+    Description:
+        Common css file for most of the web pages
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+
+/*global*/
+body{
+  font:14px 'Droid Sans', sans-serif;
+  line-height:1.8em;
+}
+p{
+  margin:1.2em 0;
+}
+a{
+  color: #524F46;
+}
+hr{
+  width: 30%;
+  margin: 24px;
+}
+table, tr, td, th{
+  border: 1px solid #ddd;
+}
+table{
+  width: 100%;
+}
+td, th{
+  padding: 7px;
+  vertical-align: middle;
+}
+th{
+  font-weight: bold;
+  width: 1%;
+}
+h1{
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 160%;
+}
+h2{
+  margin: 12px;
+  margin-top: 24px;
+  font-size: 120%;
+}
+h3{
+  margin: 11px;
+  margin-top: 22px;
+  font-size: 110%;
+}
+h4{
+  margin-top: 20px;
+}
+caption{
+  font-size: 120%;
+}
+input[type=text], input[type=password]{
+  width: 400px;
+}
+li ul, li ol {
+	margin:0 1.5em;
+}
+ul, ol {
+	margin:0 1.5em 1.5em 1.5em;
+}
+ul li {
+	list-style-type:disc;
+}
+ol li {
+	list-style-type:decimal;
+}
+ol ol li {
+	list-style: upper-alpha;
+}
+ol ol ol li {
+	list-style: lower-roman;
+}
+ol ol ol ol li {
+	list-style: lower-alpha;
+}
+
+code{
+  display: block;
+  color: white;
+  background-color: #282828;
+  padding-left: 10px;
+  word-wrap:break-word;
+  padding-right: 10px;
+}
+
+/*container*/
+div.container{
+  background: url(../images/bg-page.png) repeat-x bottom;
+}
+
+
+/*header*/
+div.header{
+  height:110px;
+  background: url(../images/bg-header.jpg) repeat-x top;
+}
+
+
+/*content*/
+div.main{
+  min-height: 500px;
+}
+div.lt{
+  float: left;
+  text-align: center;
+}
+div.rt{
+  float: right;
+}
+
+
+/*flashes*/
+.notice{
+  margin: 4px 0;
+  padding: 4px 4px 4px 30px;
+  background: url(../images/tick.png) no-repeat 10px 4px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #ffc;
+}
+.error{
+  margin: 4px 0;
+  padding: 4px 4px 4px 30px;
+  background: url(../images/error.png) no-repeat 10px 4px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f33;
+  color: #fff;
+}
+
+
+/*footer*/
+div.footer{
+  height: 153px;
+  background: url(../images/bg-footer.jpg) repeat-x bottom;
+  clear: both;
+}
+div.ct{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/*cool menu*/
+div.coolmenu{
+  margin-left: 5px;
+  margin-top: 3px;
+  border: 1px solid black;
+  width: 100%;
+  background-color: #E6E6E6;
+}
+div.coolmenu a{
+  font: bold 13px Verdana;
+  padding: 3px;
+  padding-left: 4px;
+  display: block;
+  color: black;
+  width: auto;
+  text-decoration: none;
+  border-bottom: 1px solid black;
+}
+div.coolmenu a:hover{
+  background-color: black;
+  color: red;
+}
+
+/*form errors*/
+ul.error_list{
+  color: red;
+}

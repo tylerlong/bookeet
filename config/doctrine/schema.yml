@@ -1,0 +1,99 @@
+Item:
+  actAs:
+    Timestampable: ~
+    SoftDelete: ~
+  options: { collate: utf8_unicode_ci, charset: utf8 }
+  columns:
+    is_activated: { type: boolean, notnull: true, default: true }
+
+Language:
+  actAs:
+    Timestampable:
+      updated: { disabled: true }
+  options: { collate: utf8_unicode_ci, charset: utf8 }
+  columns:
+    code: { type: string(2), notnull: true, unique: true }
+    name: { type: string(63), notnull: true, unique: true }
+    localized_name: { type: string(63), notnull: true, unique: true }
+    
+Book:
+  inheritance:
+    extends: Item
+    type: concrete
+  columns:
+    user_id: { type: integer, notnull: true }
+    title: { type: string(255), notnull: true, unique: true }
+    author: { type: string(255), notnull: true }
+  relations:
+    User: { class: sfGuardUser, foreign: id, local: user_id, onDelete: CASCADE, foreignAlias: books }
+
+Edition:
+  inheritance:
+    extends: Item
+    type: concrete
+  columns:
+    user_id: { type: integer, notnull: true }
+    book_id: { type: integer, notnull: true }
+    version: { type: string(255), notnull: true }
+  indexes:
+    book_id_version_UNIQUE:
+      fields: [ book_id, version ]
+      type: unique
+  relations:
+    Book: { local: book_id, foreign: id, foreignAlias: editions }
+    User: { class: sfGuardUser, foreign: id, local: user_id, onDelete: CASCADE, foreignAlias: editions }
+
+Article:
+  inheritance:
+    extends: Item
+    type: concrete
+  columns:
+    title: { type: string(255), notnull: true }
+    description: { type: string(16383), notnull: true }
+    html_description: { type: string(16383), notnull: false }
+
+Translation:
+  inheritance:
+    extends: Article
+    type: concrete
+  columns:
+    user_id: { type: integer, notnull: true }
+    edition_id: { type: integer, notnull: true  }
+    language_id: { type: integer, notnull: true  }
+    url: { type: string(255), notnull: false, unique: true }
+  relations:
+    Edition: { local: edition_id, foreign: id, foreignAlias: translations }
+    Language: { local: language_id, foreign: id, foreignAlias: translations }
+    User: { class: sfGuardUser, foreign: id, local: user_id, onDelete: CASCADE, foreignAlias: translations }
+  indexes:
+    edition_id_language_id_UNIQUE:
+      fields: [ edition_id, language_id ]
+      type: unique
+
+Chapter:
+  inheritance:
+    extends: Article
+    type: concrete
+  columns:
+    translation_id: { type: integer, notnull: true }
+    number: { type: integer, notnull:true }
+  indexes:
+    translation_id_title_UNIQUE:
+      fields: [ translation_id, title ]
+      type: unique
+  relations:
+    Translation: { onDelete: CASCADE, local: translation_id, foreign: id, foreignAlias: chapters }
+
+Section:
+  inheritance:
+    extends: Article
+    type: concrete
+  columns:
+    chapter_id: { type: integer, notnull: true }
+    number: { type: integer, notnull:true }
+  indexes:
+    chapter_id_title_UNIQUE:
+      fields: [ chapter_id, title ]
+      type: unique
+  relations:
+    Chapter: { onDelete: CASCADE, local: chapter_id, foreign: id, foreignAlias: sections }

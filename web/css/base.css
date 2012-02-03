@@ -1,0 +1,106 @@
+/* 
+    Created on : Aug 12, 2010, 7:02:21 AM
+    Author     : Peter Long  http://peterlong.info
+    Description:
+        Base css file for a website
+*/
+
+/*CSS reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*atom classes*/
+.w1001{
+  width: 1%;
+}
+.w10015{
+  width: 15%;
+}
+.w10020{
+  width: 20%;
+}
+.w100100{
+  width: 100%;
+}
+.w10080{
+  width: 80%;
+}
+.w10075{
+  width: 75%;
+}
+.ml10010{
+  margin-left: 10%;
+}
+.mt10{
+  margin-top: 10px;
+}
+.mt50{
+  margin-top: 50px;
+}
+.mt150{
+  margin-top: 150px;
+}
+.mb50{
+  margin-bottom: 50px;
+}
+.mr10005{
+  margin-right: 5%;
+}
+.mr50{
+  margin-right: 50px;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}

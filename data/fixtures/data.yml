@@ -1,0 +1,450 @@
+Section:
+  Section_1:
+    is_activated: true
+    title: 需求分析
+    description: '开发一个history search网站，搜索全世界历史。历史资料来源于互联网。用户可以查看历史资料原文，也可以查看解析后的字段化历史资料。用户可以按照关键字搜索历史事件，也可以按照日期浏览。提供"More Like This"功能，推荐类似的历史事件。'
+    html_description: "<p>开发一个history search网站，搜索全世界历史。历史资料来源于互联网。用户可以查看历史资料原文，也可以查看解析后的字段化历史资料。用户可以按照关键字搜索历史事件，也可以按照日期浏览。提供&quot;More Like This&quot;功能，推荐类似的历史事件。</p>\n"
+    Chapter: Chapter_1
+    number: '1'
+    created_at: '2010-10-17 14:20:52'
+    updated_at: '2010-10-22 08:56:15'
+    deleted_at: '0000-00-00 00:00:00'
+  Section_2:
+    is_activated: true
+    title: 最简单的爬虫程序
+    description: "我们将采用python语言来开发一个最简单的爬虫程序。采用python语言并没有什么特殊的理由，这个程序也可以用其它语言比较方便地实现出来。我们接下来的章节会逐渐采用一些其它语言编写代码。Python是一种面向对象、直译式计算机程序设计语言，也是一种功能强大而完善的通用型语言，已经具有十多年的发展历史，成熟且稳定。这种语言具有非常简捷而清晰的语法特点，适合完成各种高层任务，几乎可以在所有的操作系统中运行。可以用最简单的记事本或者gedit等来编写python程序，不过本书在例子程序的编写时采用的是免费且功能强大的Netbeans。关于Netbeans的介绍以及如何在Netbeans中创建Python的开发环境，请参见附录1。\r\n\r\n首先我们创建一个 Python Package： org.bookeet.pvse.crawlers。使用package来组织代码是一个良好的习惯。它可以让你的代码结构条理清晰，并且可以有效避免命名冲突（你不能在同一个文件夹下面放置两个名字一模一样的文件，不是吗？）。python package的命名一般是按照范围从大到小的顺序，依次列出包名和子包名。 org.bookeet.pvse.crawlers 的意思是bookeet.org网站上的Practical Vertical Search Engine项目的crawlers部分。\r\n\r\n	# simple_crawler.py\r\n	import urllib2\r\n\r\n	class SimpleCrawler:\r\n	  def get(self, url):\r\n	    socket = urllib2.urlopen(url)\r\n	    data = socket.read()\r\n	    socket.close()\r\n	    return data\r\n\r\nsimple_crawler.py 的代码非常简单。它定义个一个类SimpleCrawler，类里面只有一个方法get。get方法的第一个参数self是python语言强制的，代表这个类本身。也就是说get方法真正接受的参数只有url。get方法最终返回这个url对应的网页的内容data。对于有一些python基础的读者来说，这段代码已经很清晰地表明了意图了：接受参数url，返回url对应网页的内容data。没有接触过python语言的读者，相信理解起来也不会有太大困难。如果想对python语言有更深入一步的了解，推荐阅读[dive into python](http://diveintopython.org/)。\r\n\r\n	# main.py\r\n	from simple_crawler import SimpleCrawler\r\n\r\n	if __name__=='__main__':\r\n	  simpleCrawler=SimpleCrawler();\r\n	  data=simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=5555555.PN.&OS=PN/5555555&RS=PN/5555555');\r\n	  print data\r\n\r\nmain.py 的代码也同样简单。它新建一个SimpleCrawler对象，然后调用对象的get方法来获取编号为5555555的专利的内容。最终把获取的内容打印出来。有python运行环境的读者可以运行这个程序试试。最终结果是这样的：\r\n\r\n	<HTML>\r\n	<HEAD>\r\n	<BASE TARGET=\"_top\">\r\n	<TITLE>United States Patent: 5555555</TITLE></HEAD>\r\n	<BODY BGCOLOR=\"#FFFFFF\">\r\n	......\r\n	</BODY>\r\n	</HTML>\r\n\r\n<BODY>部分的内容在这里为了节省篇幅省略掉了。这个运行结果表明我们当前的程序是可以获取专利的内容的。至此，这个简单的爬虫例子就讲完了。接下来我们会优化这个爬虫，为它添加捕捉异常、保存文件、遍历专利等等功能。"
+    html_description: "<p>我们将采用python语言来开发一个最简单的爬虫程序。采用python语言并没有什么特殊的理由，这个程序也可以用其它语言比较方便地实现出来。我们接下来的章节会逐渐采用一些其它语言编写代码。Python是一种面向对象、直译式计算机程序设计语言，也是一种功能强大而完善的通用型语言，已经具有十多年的发展历史，成熟且稳定。这种语言具有非常简捷而清晰的语法特点，适合完成各种高层任务，几乎可以在所有的操作系统中运行。可以用最简单的记事本或者gedit等来编写python程序，不过本书在例子程序的编写时采用的是免费且功能强大的Netbeans。关于Netbeans的介绍以及如何在Netbeans中创建Python的开发环境，请参见附录1。</p>\n\n<p>首先我们创建一个 Python Package： org.bookeet.pvse.crawlers。使用package来组织代码是一个良好的习惯。它可以让你的代码结构条理清晰，并且可以有效避免命名冲突（你不能在同一个文件夹下面放置两个名字一模一样的文件，不是吗？）。python package的命名一般是按照范围从大到小的顺序，依次列出包名和子包名。 org.bookeet.pvse.crawlers 的意思是bookeet.org网站上的Practical Vertical Search Engine项目的crawlers部分。</p>\n\n<pre><code># simple_crawler.py\nimport urllib2\n\nclass SimpleCrawler:\n  def get(self, url):\n    socket = urllib2.urlopen(url)\n    data = socket.read()\n    socket.close()\n    return data\n</code></pre>\n\n<p>simple_crawler.py 的代码非常简单。它定义个一个类SimpleCrawler，类里面只有一个方法get。get方法的第一个参数self是python语言强制的，代表这个类本身。也就是说get方法真正接受的参数只有url。get方法最终返回这个url对应的网页的内容data。对于有一些python基础的读者来说，这段代码已经很清晰地表明了意图了：接受参数url，返回url对应网页的内容data。没有接触过python语言的读者，相信理解起来也不会有太大困难。如果想对python语言有更深入一步的了解，推荐阅读<a href=\"http://diveintopython.org/\">dive into python</a>。</p>\n\n<pre><code># main.py\nfrom simple_crawler import SimpleCrawler\n\nif __name__=='__main__':\n  simpleCrawler=SimpleCrawler();\n  data=simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=5555555.PN.&amp;OS=PN/5555555&amp;RS=PN/5555555');\n  print data\n</code></pre>\n\n<p>main.py 的代码也同样简单。它新建一个SimpleCrawler对象，然后调用对象的get方法来获取编号为5555555的专利的内容。最终把获取的内容打印出来。有python运行环境的读者可以运行这个程序试试。最终结果是这样的：</p>\n\n<pre><code>&lt;HTML&gt;\n&lt;HEAD&gt;\n&lt;BASE TARGET=\"_top\"&gt;\n&lt;TITLE&gt;United States Patent: 5555555&lt;/TITLE&gt;&lt;/HEAD&gt;\n&lt;BODY BGCOLOR=\"#FFFFFF\"&gt;\n......\n&lt;/BODY&gt;\n&lt;/HTML&gt;\n</code></pre>\n\n<p>&lt;BODY&gt;部分的内容在这里为了节省篇幅省略掉了。这个运行结果表明我们当前的程序是可以获取专利的内容的。至此，这个简单的爬虫例子就讲完了。接下来我们会优化这个爬虫，为它添加捕捉异常、保存文件、遍历专利等等功能。</p>\n"
+    Chapter: Chapter_5
+    number: '1'
+    created_at: '2010-10-24 08:46:19'
+    updated_at: '2010-10-25 08:31:49'
+    deleted_at: null
+  Section_3:
+    is_activated: true
+    title: '下载安装 Netbeans'
+    description: "Netbeans 的官方网站是[netbeans.org](http://netbeans.org/)。打开首页，可以看到Netbeans的[下载页面](http://netbeans.org/downloads/index.html)。\r\n\r\n这个页面包含了最新稳定版本的Netbneas下载链接，当前 Netbeans 版本号是6.9.1。如果你们跟我用的操作系统不一样，可能看到的页面也不太一样。笔者用的是Ubuntu Linux，不同的操作系统下载的Netbeans文件也不相同。这里就以Ubuntu Linux为例子讲解，使用其它操作系统的用户可以模仿相应的步骤。笔者也曾在Windows操作系统上安装过Netbeans,并未遇到太大困难。\r\n\r\n同时，还有不同的打包版本供选择：Java、PHP、Ruby等。下载哪个都是可以的，因为不同的打包版本无一例外都包含了Netbeans的核心，不同指出在于他们安装的插件不同。Netbeans是通过插件来实现非核心的功能的。我们可以先随便下载一个，然后通过添加删除插件的方式来定制我们所需要的功能。\r\n\r\n我们就选择体积最小的 Netbeans for PHP 版本下载吧。"
+    html_description: "<p>Netbeans 的官方网站是<a href=\"http://netbeans.org/\">netbeans.org</a>。打开首页，可以看到Netbeans的<a href=\"http://netbeans.org/downloads/index.html\">下载页面</a>。</p>\n\n<p>这个页面包含了最新稳定版本的Netbneas下载链接，当前 Netbeans 版本号是6.9.1。如果你们跟我用的操作系统不一样，可能看到的页面也不太一样。笔者用的是Ubuntu Linux，不同的操作系统下载的Netbeans文件也不相同。这里就以Ubuntu Linux为例子讲解，使用其它操作系统的用户可以模仿相应的步骤。笔者也曾在Windows操作系统上安装过Netbeans,并未遇到太大困难。</p>\n\n<p>同时，还有不同的打包版本供选择：Java、PHP、Ruby等。下载哪个都是可以的，因为不同的打包版本无一例外都包含了Netbeans的核心，不同指出在于他们安装的插件不同。Netbeans是通过插件来实现非核心的功能的。我们可以先随便下载一个，然后通过添加删除插件的方式来定制我们所需要的功能。</p>\n\n<p>我们就选择体积最小的 Netbeans for PHP 版本下载吧。</p>\n"
+    Chapter: Chapter_6
+    number: '1'
+    created_at: '2010-10-24 09:27:13'
+    updated_at: '2010-10-24 10:03:48'
+    deleted_at: null
+  Section_4:
+    is_activated: true
+    title: 改进爬虫程序
+    description: "在上一小节我们已经写了一个能够工作的爬虫。这个爬虫能够从美国专利局的网站上抓取某一份专利的信息。但是它实在是太简单了，没办法直接为我们的项目服务。我们需要继续对它进行迭代开发和重构。迭代开发模式是笔者比较喜欢的。一开始不追求完美，只要一个尽量简单并且能工作的程序就行了。软件设计有两种方式：一种是设计得尽量复杂并且没有明显的缺陷；另一种是设计得尽量简单并且明显没有缺陷。凡是读过《重构》这本书的人，都应该知道后一种方法是优于前一种方法的。当然这里不是教大家放弃软件设计，直接写代码；设计还是必要的，只不过没必要在一开始就把问题过度复杂化。可以步步为营，每次改进一点，并且保证每次的代码都是可以运行的，逐步地就会得到一个设计比较完善的程序了。这一小节就是要和大家一起走一下这个步步为营的过程。\r\n\r\n上一节最后得到的程序的行为是仅仅把结果打印出来。我们需要把爬虫获取的内容保存在硬盘上。爬虫获取内容最终是为了把内容做成索引，供用户查询。所以我们本节的第一个任务就是把内容保存下来：\r\n\r\n	# main.py\r\n	from simple_crawler import SimpleCrawler\r\n\r\n	if __name__=='__main__':\r\n	  simpleCrawler=SimpleCrawler();\r\n	  data=simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=5555555.PN.&OS=PN/5555555&RS=PN/5555555');\r\n	  file=open('data/5555555.html','w')\r\n	  file.write(data)\r\n	  file.close()\r\n\r\n代码改动的地方只有最后的三行，把打印语句替换成了写文件操作。file=open('data/5555555.html','w') 以可写的模式打开文件 data/5555555.html。 注意这里使用的是相对路径，所以当前程序的目录必须要有一个data目录（没有的话需要手工创建）。 然而data目录里面不需要已经存在5555555.html这个文件，因为python的open方法以可写模式打开文件的时候，会自动创建不存在的文件。接下来的代码就很直观了：写入文件内容，关闭文件。这个程序执行完之后，会发现data/5555555.html文件里出现了内容，跟上一个例子打印在屏幕上的内容一模一样。\r\n\r\n现在手头的程序已经可以获取某个专利的内容并保存到硬盘上了，但它仍然不是一个完整的爬虫程序。一个完整的爬虫程序应该能够自动爬取所有的目标内容：\r\n\r\n	import time\r\n	from simple_crawler import SimpleCrawler\r\n\r\n	if __name__ == '__main__':\r\n	  simpleCrawler = SimpleCrawler();\r\n	  for patentNumber in range(3600000, 8000000):\r\n	    data = simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=%d.PN.&OS=PN/%d&RS=PN/%d' % (patentNumber, patentNumber, patentNumber));\r\n	    file = open('data/%d.html' % patentNumber, 'w')\r\n	    file.write(data)\r\n	    file.close()\r\n	    time.sleep(8)\r\n上述程序通过一个for循环，遍历抓取从编号3600000一直到编号8000000的所有专利。选取这个范围并没有什么特殊的理由。这些专利覆盖了从1971年一直到今天的绝大多数美国专利，作为我们项目展示的目的来讲，足够多了。time.sleep(8)：每抓取一条休息8秒，这是由于爬虫的礼貌性限制，我们不能爬取目标网站太频繁，以免影响其正常运行。\r\n\r\n运行上面的程序，等一会儿就会在data目录下面发现数量逐渐增多的专利文件：3600000.html、3600001.html、3600002.html...。假如不出意外的话程序会一直这么运行下去。但这只是假如。意外情况总是防不胜防的，所以我么要为程序加上点捕捉异常的机制。最常见的异常恐怕就是网络故障了。有可能是本地网络故障，也有可能是网络服务器故障。我们来模拟下网络故障，试着把路由器的电源关掉，或者把电脑的网线拔掉...。很快，我们的程序就出问题了：\r\n\r\n	Traceback (most recent call last):\r\n	  File \"/home/peter/dev/projects/PatentCrawler/src/org/bookeet/pvse/crawlers/main.py\", line 9, in <module>\r\n	    data = simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=%d.PN.&OS=PN/%d&RS=PN/%d' % (patentNumber, patentNumber, patentNumber));\r\n	  File \"/home/peter/dev/projects/PatentCrawler/src/org/bookeet/pvse/crawlers/simple_crawler.py\", line 7, in get\r\n	    socket = urllib2.urlopen(url)\r\n	  File \"/usr/lib/python2.6/urllib2.py\", line 126, in urlopen\r\n	    return _opener.open(url, data, timeout)\r\n	  File \"/usr/lib/python2.6/urllib2.py\", line 391, in open\r\n	    response = self._open(req, data)\r\n	  File \"/usr/lib/python2.6/urllib2.py\", line 409, in _open\r\n	    '_open', req)\r\n	  File \"/usr/lib/python2.6/urllib2.py\", line 369, in _call_chain\r\n	    result = func(*args)\r\n	  File \"/usr/lib/python2.6/urllib2.py\", line 1161, in http_open\r\n	    return self.do_open(httplib.HTTPConnection, req)\r\n	  File \"/usr/lib/python2.6/urllib2.py\", line 1136, in do_open\r\n	    raise URLError(err)\r\n	urllib2.URLError: <urlopen error [Errno 101] Network is unreachable>\r\n你们电脑上出现的异常可能跟我的略有不同，比如说python的版本号，程序文件所放置的位置等等。我们必须处理这种异常情况。首先，发生了网络异常的情况时，我们希望程序能够重复尝试抓取。其次，如果程序发生了未捕捉的异常而退出了，我们再次启动程序时，不需要把所有的专利再重新抓取一遍。data目录下已经有的专利就可以跳过不抓了。我是按照下面的方式实现的：\r\n\r\n	import os.path\r\n	import time\r\n\r\n	from simple_crawler import SimpleCrawler\r\n\r\n	if __name__ == '__main__':\r\n	  simpleCrawler = SimpleCrawler();\r\n	  for patentNumber in range(3600000, 8000000):\r\n	    if(os.path.exists('data/%d.html' % patentNumber)):\r\n	      continue\r\n	    fetchSuccess = False\r\n	    while (not fetchSuccess):\r\n	      try:\r\n	        data = simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=%d.PN.&OS=PN/%d&RS=PN/%d' % (patentNumber, patentNumber, patentNumber));\r\n	        fetchSuccess = True\r\n	      except:\r\n	        time.sleep(30)\r\n	    file = open('data/%d.html' % patentNumber, 'w')\r\n	    file.write(data)\r\n	    file.close()\r\n	    time.sleep(8)\r\n上述程序未必是最好的实现方式，但它已经满足了我们现阶段的需求了。首先，我们利用 os.path.exists 来判断某项专利文件是否已经存在，如果已经存在，就跳过本轮循环。这样就避免了重复从网络上抓取内容。其次我们添加了try语句来捕捉网络异常，发生异常我们就休息30秒。休息过后会再次尝试抓取，直到抓取成功为止。这种如果不成功就一直重试的方式是通过 while (not fetchSuccess) 来实现的。请仔细阅读代码。再次说明：这种方式未必是最好的。读者们可以想想有没有其它更好的方式来处理网络异常，留给你们做练习。\r\n\r\n至此，似乎一切都很美妙了。爬虫程序自动从网上抓取专利，发生了异常还能自动重试。程序关闭了再打开，也不会重复抓取。程序运行得很顺利，很快抓取到的专利就达到了几万条。我们似乎可以高枕无忧地等着它把所有的专利都抓取完。不过，问题很快就来了：随着文件数目的增多，打开data目录变得很慢，浏览起来也非常慢...。这才几万个文件，如果几十万,速度会更满。如果你的电脑没有大的内存和cpu的话，很可能会卡死。全部简历都抓取完至少几百万，就这样放到硬盘上行不通。我们需要有专门的存储。不过这就不在本章的讨论范围内了。请继续阅读下一章：原始数据仓库"
+    html_description: "<p>在上一小节我们已经写了一个能够工作的爬虫。这个爬虫能够从美国专利局的网站上抓取某一份专利的信息。但是它实在是太简单了，没办法直接为我们的项目服务。我们需要继续对它进行迭代开发和重构。迭代开发模式是笔者比较喜欢的。一开始不追求完美，只要一个尽量简单并且能工作的程序就行了。软件设计有两种方式：一种是设计得尽量复杂并且没有明显的缺陷；另一种是设计得尽量简单并且明显没有缺陷。凡是读过《重构》这本书的人，都应该知道后一种方法是优于前一种方法的。当然这里不是教大家放弃软件设计，直接写代码；设计还是必要的，只不过没必要在一开始就把问题过度复杂化。可以步步为营，每次改进一点，并且保证每次的代码都是可以运行的，逐步地就会得到一个设计比较完善的程序了。这一小节就是要和大家一起走一下这个步步为营的过程。</p>\n\n<p>上一节最后得到的程序的行为是仅仅把结果打印出来。我们需要把爬虫获取的内容保存在硬盘上。爬虫获取内容最终是为了把内容做成索引，供用户查询。所以我们本节的第一个任务就是把内容保存下来：</p>\n\n<pre><code># main.py\nfrom simple_crawler import SimpleCrawler\n\nif __name__=='__main__':\n  simpleCrawler=SimpleCrawler();\n  data=simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=5555555.PN.&amp;OS=PN/5555555&amp;RS=PN/5555555');\n  file=open('data/5555555.html','w')\n  file.write(data)\n  file.close()\n</code></pre>\n\n<p>代码改动的地方只有最后的三行，把打印语句替换成了写文件操作。file=open('data/5555555.html','w') 以可写的模式打开文件 data/5555555.html。 注意这里使用的是相对路径，所以当前程序的目录必须要有一个data目录（没有的话需要手工创建）。 然而data目录里面不需要已经存在5555555.html这个文件，因为python的open方法以可写模式打开文件的时候，会自动创建不存在的文件。接下来的代码就很直观了：写入文件内容，关闭文件。这个程序执行完之后，会发现data/5555555.html文件里出现了内容，跟上一个例子打印在屏幕上的内容一模一样。</p>\n\n<p>现在手头的程序已经可以获取某个专利的内容并保存到硬盘上了，但它仍然不是一个完整的爬虫程序。一个完整的爬虫程序应该能够自动爬取所有的目标内容：</p>\n\n<pre><code>import time\nfrom simple_crawler import SimpleCrawler\n\nif __name__ == '__main__':\n  simpleCrawler = SimpleCrawler();\n  for patentNumber in range(3600000, 8000000):\n    data = simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=%d.PN.&amp;OS=PN/%d&amp;RS=PN/%d' % (patentNumber, patentNumber, patentNumber));\n    file = open('data/%d.html' % patentNumber, 'w')\n    file.write(data)\n    file.close()\n    time.sleep(8)\n</code></pre>\n\n<p>上述程序通过一个for循环，遍历抓取从编号3600000一直到编号8000000的所有专利。选取这个范围并没有什么特殊的理由。这些专利覆盖了从1971年一直到今天的绝大多数美国专利，作为我们项目展示的目的来讲，足够多了。time.sleep(8)：每抓取一条休息8秒，这是由于爬虫的礼貌性限制，我们不能爬取目标网站太频繁，以免影响其正常运行。</p>\n\n<p>运行上面的程序，等一会儿就会在data目录下面发现数量逐渐增多的专利文件：3600000.html、3600001.html、3600002.html...。假如不出意外的话程序会一直这么运行下去。但这只是假如。意外情况总是防不胜防的，所以我么要为程序加上点捕捉异常的机制。最常见的异常恐怕就是网络故障了。有可能是本地网络故障，也有可能是网络服务器故障。我们来模拟下网络故障，试着把路由器的电源关掉，或者把电脑的网线拔掉...。很快，我们的程序就出问题了：</p>\n\n<pre><code>Traceback (most recent call last):\n  File \"/home/peter/dev/projects/PatentCrawler/src/org/bookeet/pvse/crawlers/main.py\", line 9, in &lt;module&gt;\n    data = simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=%d.PN.&amp;OS=PN/%d&amp;RS=PN/%d' % (patentNumber, patentNumber, patentNumber));\n  File \"/home/peter/dev/projects/PatentCrawler/src/org/bookeet/pvse/crawlers/simple_crawler.py\", line 7, in get\n    socket = urllib2.urlopen(url)\n  File \"/usr/lib/python2.6/urllib2.py\", line 126, in urlopen\n    return _opener.open(url, data, timeout)\n  File \"/usr/lib/python2.6/urllib2.py\", line 391, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python2.6/urllib2.py\", line 409, in _open\n    '_open', req)\n  File \"/usr/lib/python2.6/urllib2.py\", line 369, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python2.6/urllib2.py\", line 1161, in http_open\n    return self.do_open(httplib.HTTPConnection, req)\n  File \"/usr/lib/python2.6/urllib2.py\", line 1136, in do_open\n    raise URLError(err)\nurllib2.URLError: &lt;urlopen error [Errno 101] Network is unreachable&gt;\n</code></pre>\n\n<p>你们电脑上出现的异常可能跟我的略有不同，比如说python的版本号，程序文件所放置的位置等等。我们必须处理这种异常情况。首先，发生了网络异常的情况时，我们希望程序能够重复尝试抓取。其次，如果程序发生了未捕捉的异常而退出了，我们再次启动程序时，不需要把所有的专利再重新抓取一遍。data目录下已经有的专利就可以跳过不抓了。我是按照下面的方式实现的：</p>\n\n<pre><code>import os.path\nimport time\n\nfrom simple_crawler import SimpleCrawler\n\nif __name__ == '__main__':\n  simpleCrawler = SimpleCrawler();\n  for patentNumber in range(3600000, 8000000):\n    if(os.path.exists('data/%d.html' % patentNumber)):\n      continue\n    fetchSuccess = False\n    while (not fetchSuccess):\n      try:\n        data = simpleCrawler.get('http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=%d.PN.&amp;OS=PN/%d&amp;RS=PN/%d' % (patentNumber, patentNumber, patentNumber));\n        fetchSuccess = True\n      except:\n        time.sleep(30)\n    file = open('data/%d.html' % patentNumber, 'w')\n    file.write(data)\n    file.close()\n    time.sleep(8)\n</code></pre>\n\n<p>上述程序未必是最好的实现方式，但它已经满足了我们现阶段的需求了。首先，我们利用 os.path.exists 来判断某项专利文件是否已经存在，如果已经存在，就跳过本轮循环。这样就避免了重复从网络上抓取内容。其次我们添加了try语句来捕捉网络异常，发生异常我们就休息30秒。休息过后会再次尝试抓取，直到抓取成功为止。这种如果不成功就一直重试的方式是通过 while (not fetchSuccess) 来实现的。请仔细阅读代码。再次说明：这种方式未必是最好的。读者们可以想想有没有其它更好的方式来处理网络异常，留给你们做练习。</p>\n\n<p>至此，似乎一切都很美妙了。爬虫程序自动从网上抓取专利，发生了异常还能自动重试。程序关闭了再打开，也不会重复抓取。程序运行得很顺利，很快抓取到的专利就达到了几万条。我们似乎可以高枕无忧地等着它把所有的专利都抓取完。不过，问题很快就来了：随着文件数目的增多，打开data目录变得很慢，浏览起来也非常慢...。这才几万个文件，如果几十万,速度会更满。如果你的电脑没有大的内存和cpu的话，很可能会卡死。全部简历都抓取完至少几百万，就这样放到硬盘上行不通。我们需要有专门的存储。不过这就不在本章的讨论范围内了。请继续阅读下一章：原始数据仓库</p>\n"
+    Chapter: Chapter_5
+    number: '2'
+    created_at: '2010-10-24 22:28:21'
+    updated_at: '2010-10-25 21:24:42'
+    deleted_at: null
+  Section_5:
+    is_activated: true
+    title: '安装配置Tokyo Tyrant'
+    description: "Tokyo Cabinet（TC）最新的源文件在 [这里](http://www.1978th.net/tokyocabinet/)下载；Tokyo Tyrant（TT） 最新的源文件在 [这里](http://fallabs.com/tokyotyrant/) 下载。\r\n\r\n假设你用的操作系统恰好跟我一样是Ubuntu Linux或者和它类似的Debian Linux的话，你可以完全按照我下面的方式进行安装配置操作。假设你用的操作系统是苹果或者其它Linux版本的话，请你自行研究出怎么进行如下步骤。不同操作系统上面的操作应该是类似的。（Windows平台下面的用户注意了，据说TC，TT是无法在Windows平台安装的。不过作者分别开发出了可以运行在Windows平台的替代产品Kyoto Cabinet（KC）和Kyoto Tycoon（KT），请自行Google之）。\r\n\r\n\r\n#### 安装 TC\r\n从上面的地址下载 TC 最新的安装文件。当前最新版本是 tokyocabinet-1.4.46.tar.gz。依次执行以下命令：\r\n\r\n	tar -xvf tokyocabinet-1.4.46.tar.gz\r\n	cd tokyocabinet-1.4.46/\r\n	sudo ./configure --enable-off64\r\n	sudo make\r\n	sudo make install\r\n上述命令中的“--enable-off64”是专门针对32为操作系统的。加上这个选项后，32位系统也能支持超过2G大小的TC数据文件了。如果在执行上述过程中出现错误，说缺少某些文件，要根据实际情况安装第三方的类库。\r\n\r\n\r\n#### 安装 TT\r\n从上面的地址下载 TT 最新的安装文件。当前最新版本是 tokyotyrant-1.1.41.tar.gz。依次执行以下命令：\r\n\r\n	tar -xvf tokyotyrant-1.1.41.tar.gz\r\n	cd tokyotyrant-1.1.41/\r\n	sudo ./configure\r\n	sudo make\r\n	sudo make install\r\nTT 的安装过程跟 TC 基本是一致的,在这里就不再赘述了。事实上，linux平台下面编译和安装软件，都是按照上面类似的流程，不会太难为。只是有时候会在configure或者make的时候报错，说找不到什么文件。说明软件依赖的某些类库或者软件没有安装。根据实际情况去下载安装就行了。这往往会成为在Linux下面编译安装软件最难的部分。\r\n\r\n\r\n#### 配置 TT\r\nTC 和 TT 里面真正做事情的其实是 TC。但是直接针对TC编程会比较困难，所以大家一般都会使用TT。TT作为TC的服务器对外提供服务。这也是为什么有的人把 TT 叫做ttserver。（TC 跟 TT 之间的关系有点类似 Lucene 跟 Solr 的关系，我们在后面的章节会详细讲。）首先我们要确认下要把数据文件放在哪里。应该说放在哪里都不会太错，只是注意了尽量别跟系统的文件放在一起。推荐放在常用的存放数据的地方。同时，确保硬盘上有至少几个G的可用空间。笔者选择了目录 /home/peter/dev/data/ttserver/ 来存放 TT 的数据文件，我们管它叫做**TT的根目录**，以下都会以这个目录为基准进行讲解。首先在这个目录创建目录结构PatentCenter/raw/，因为将来我们可能还要用 TT 存放其它数据，所以我们为当前存放的数据创建了子文件夹。然后，在TT根目录创建一个脚本文件patentCenter_raw_start.sh，并给它可执行的权限。这个脚本的名字已经解释清楚它是做什么的了：用来启动ttserver，并且这个ttserver是为PatentCenter项目的raw数据服务的。下面来编辑脚本的内容：\r\n\r\n	ttserver -host 127.0.0.1 -port 15001 -dmn -pid /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.pid -log /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.log -le -ulog /home/peter/dev/data/ttserver/PatentCenter/raw/ -ulim 128m -sid 1 -rts /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.rts /home/peter/dev/data/ttserver/PatentCenter/raw/database.tcb#lmemb=1024#nmemb=2048#bnum=10000000#opts=ld\r\n\r\n上述命令是为了启动一个ttserver服务。看起来非常长，比较吓人。不过它大部分内容是指定相应的文件存放的位置。为了方便管理起见，推荐将所有的文件放在同一个文件夹（我将它们都放在了/home/peter/dev/data/ttserver/PatentCenter/raw/）。剩下的就是一全部可用参数列表及其讲解可以在 [这里](http://fallabs.com/tokyotyrant/spex.html) 找到。这里说几个比较重要的：-host指定ip地址，本机的话用127.0.0.1即可。-port指定端口号，一个ttserver实例占用一个端口号，我们这里用15001。接下来我们如果再创建ttserver实例，就要另外用一个端口号，比如15002。#opts=ld 参数对于32位系统来讲是必须的，除非你确保你的数据文件大小不会超过2GB。\r\n\r\n\r\n#### 运行并测试 TT\r\n	peter@peter-desktop:~$ pwd\r\n	/home/peter\r\n	peter@peter-desktop:~$ cd dev/data/ttserver/\r\n	peter@peter-desktop:~/dev/data/ttserver$ sudo ./patentCenter_raw_start.sh \r\n	peter@peter-desktop:~/dev/data/ttserver$ ps -ef | grep ttserver\r\n	root      2307     1  0 08:13 ?        00:00:00 ttserver -host 127.0.0.1 -port 15001 -dmn -pid /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.pid -log /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.log -le -ulog /home/peter/dev/data/ttserver/PatentCenter/raw/ -ulim 128m -sid 1 -rts /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.rts /home/peter/dev/data/ttserver/PatentCenter/raw/database.tcb#lmemb=1024#nmemb=2048#bnum=10000000#opts=ld\r\n	peter     2318  1947  0 08:13 pts/1    00:00:00 grep --color=auto ttserver\r\n	peter@peter-desktop:~/dev/data/ttserver$ curl -X PUT http://127.0.0.1:15001/key -d 'hello world'\r\n	Created\r\n	peter@peter-desktop:~/dev/data/ttserver$ curl http://127.0.0.1:15001/key\r\n	hello worldpeter@peter-desktop:~/dev/data/ttserver$ curl -X DELETE http://127.0.0.1:15001/key\r\n	OK\r\n	peter@peter-desktop:~/dev/data/ttserver$ curl http://127.0.0.1:15001/key\r\n	Not Found\r\n上述一连串的Linux命令，执行了如下一系列的操作：\r\n\r\n1. 首先是cd切换到TT的根目录，然后执行TT的启动脚本。\r\n1. 接着我们用ps -ef | grep ttserver命令查看系统中是否有ttserver这个进程，以确保ttserver启动成功了。1. 接下来的几个curl命令是测试使用TT。curl是用来发出http请求的命令，可以看到，我们首先发出了PUT请求，放入了key=hello world这样的键值对\r\n1. 接着我们发出GET请求，获取key所对应的value，确认是我们刚刚放进去的‘hello world’。\r\n1. 最后，我们用DELETE命令删除了放入的内容并再次用GET命令确认是否删除成功。\r\n\r\n至此，我们安装配置 TT 的部分就全部完成了。通过这一个小节的任务，我们得到了一个可以工作的key-value数据库。下一小节，我们研究如何用程序跟 TT 通信，把我们抓取的专利都放到 TT 里面。"
+    html_description: "<p>Tokyo Cabinet（TC）最新的源文件在 <a href=\"http://www.1978th.net/tokyocabinet/\">这里</a>下载；Tokyo Tyrant（TT） 最新的源文件在 <a href=\"http://fallabs.com/tokyotyrant/\">这里</a> 下载。</p>\n\n<p>假设你用的操作系统恰好跟我一样是Ubuntu Linux或者和它类似的Debian Linux的话，你可以完全按照我下面的方式进行安装配置操作。假设你用的操作系统是苹果或者其它Linux版本的话，请你自行研究出怎么进行如下步骤。不同操作系统上面的操作应该是类似的。（Windows平台下面的用户注意了，据说TC，TT是无法在Windows平台安装的。不过作者分别开发出了可以运行在Windows平台的替代产品Kyoto Cabinet（KC）和Kyoto Tycoon（KT），请自行Google之）。</p>\n\n<h4>安装 TC</h4>\n\n<p>从上面的地址下载 TC 最新的安装文件。当前最新版本是 tokyocabinet-1.4.46.tar.gz。依次执行以下命令：</p>\n\n<pre><code>tar -xvf tokyocabinet-1.4.46.tar.gz\ncd tokyocabinet-1.4.46/\nsudo ./configure --enable-off64\nsudo make\nsudo make install\n</code></pre>\n\n<p>上述命令中的“--enable-off64”是专门针对32为操作系统的。加上这个选项后，32位系统也能支持超过2G大小的TC数据文件了。如果在执行上述过程中出现错误，说缺少某些文件，要根据实际情况安装第三方的类库。</p>\n\n<h4>安装 TT</h4>\n\n<p>从上面的地址下载 TT 最新的安装文件。当前最新版本是 tokyotyrant-1.1.41.tar.gz。依次执行以下命令：</p>\n\n<pre><code>tar -xvf tokyotyrant-1.1.41.tar.gz\ncd tokyotyrant-1.1.41/\nsudo ./configure\nsudo make\nsudo make install\n</code></pre>\n\n<p>TT 的安装过程跟 TC 基本是一致的,在这里就不再赘述了。事实上，linux平台下面编译和安装软件，都是按照上面类似的流程，不会太难为。只是有时候会在configure或者make的时候报错，说找不到什么文件。说明软件依赖的某些类库或者软件没有安装。根据实际情况去下载安装就行了。这往往会成为在Linux下面编译安装软件最难的部分。</p>\n\n<h4>配置 TT</h4>\n\n<p>TC 和 TT 里面真正做事情的其实是 TC。但是直接针对TC编程会比较困难，所以大家一般都会使用TT。TT作为TC的服务器对外提供服务。这也是为什么有的人把 TT 叫做ttserver。（TC 跟 TT 之间的关系有点类似 Lucene 跟 Solr 的关系，我们在后面的章节会详细讲。）首先我们要确认下要把数据文件放在哪里。应该说放在哪里都不会太错，只是注意了尽量别跟系统的文件放在一起。推荐放在常用的存放数据的地方。同时，确保硬盘上有至少几个G的可用空间。笔者选择了目录 /home/peter/dev/data/ttserver/ 来存放 TT 的数据文件，我们管它叫做<strong>TT的根目录</strong>，以下都会以这个目录为基准进行讲解。首先在这个目录创建目录结构PatentCenter/raw/，因为将来我们可能还要用 TT 存放其它数据，所以我们为当前存放的数据创建了子文件夹。然后，在TT根目录创建一个脚本文件patentCenter<em>raw</em>start.sh，并给它可执行的权限。这个脚本的名字已经解释清楚它是做什么的了：用来启动ttserver，并且这个ttserver是为PatentCenter项目的raw数据服务的。下面来编辑脚本的内容：</p>\n\n<pre><code>ttserver -host 127.0.0.1 -port 15001 -dmn -pid /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.pid -log /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.log -le -ulog /home/peter/dev/data/ttserver/PatentCenter/raw/ -ulim 128m -sid 1 -rts /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.rts /home/peter/dev/data/ttserver/PatentCenter/raw/database.tcb#lmemb=1024#nmemb=2048#bnum=10000000#opts=ld\n</code></pre>\n\n<p>上述命令是为了启动一个ttserver服务。看起来非常长，比较吓人。不过它大部分内容是指定相应的文件存放的位置。为了方便管理起见，推荐将所有的文件放在同一个文件夹（我将它们都放在了/home/peter/dev/data/ttserver/PatentCenter/raw/）。剩下的就是一全部可用参数列表及其讲解可以在 <a href=\"http://fallabs.com/tokyotyrant/spex.html\">这里</a> 找到。这里说几个比较重要的：-host指定ip地址，本机的话用127.0.0.1即可。-port指定端口号，一个ttserver实例占用一个端口号，我们这里用15001。接下来我们如果再创建ttserver实例，就要另外用一个端口号，比如15002。#opts=ld 参数对于32位系统来讲是必须的，除非你确保你的数据文件大小不会超过2GB。</p>\n\n<h4>运行并测试 TT</h4>\n\n<pre><code>peter@peter-desktop:~$ pwd\n/home/peter\npeter@peter-desktop:~$ cd dev/data/ttserver/\npeter@peter-desktop:~/dev/data/ttserver$ sudo ./patentCenter_raw_start.sh \npeter@peter-desktop:~/dev/data/ttserver$ ps -ef | grep ttserver\nroot      2307     1  0 08:13 ?        00:00:00 ttserver -host 127.0.0.1 -port 15001 -dmn -pid /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.pid -log /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.log -le -ulog /home/peter/dev/data/ttserver/PatentCenter/raw/ -ulim 128m -sid 1 -rts /home/peter/dev/data/ttserver/PatentCenter/raw/ttserver.rts /home/peter/dev/data/ttserver/PatentCenter/raw/database.tcb#lmemb=1024#nmemb=2048#bnum=10000000#opts=ld\npeter     2318  1947  0 08:13 pts/1    00:00:00 grep --color=auto ttserver\npeter@peter-desktop:~/dev/data/ttserver$ curl -X PUT http://127.0.0.1:15001/key -d 'hello world'\nCreated\npeter@peter-desktop:~/dev/data/ttserver$ curl http://127.0.0.1:15001/key\nhello worldpeter@peter-desktop:~/dev/data/ttserver$ curl -X DELETE http://127.0.0.1:15001/key\nOK\npeter@peter-desktop:~/dev/data/ttserver$ curl http://127.0.0.1:15001/key\nNot Found\n</code></pre>\n\n<p>上述一连串的Linux命令，执行了如下一系列的操作：</p>\n\n<ol>\n<li>首先是cd切换到TT的根目录，然后执行TT的启动脚本。</li>\n<li>接着我们用ps -ef | grep ttserver命令查看系统中是否有ttserver这个进程，以确保ttserver启动成功了。1. 接下来的几个curl命令是测试使用TT。curl是用来发出http请求的命令，可以看到，我们首先发出了PUT请求，放入了key=hello world这样的键值对</li>\n<li>接着我们发出GET请求，获取key所对应的value，确认是我们刚刚放进去的‘hello world’。</li>\n<li>最后，我们用DELETE命令删除了放入的内容并再次用GET命令确认是否删除成功。</li>\n</ol>\n\n<p>至此，我们安装配置 TT 的部分就全部完成了。通过这一个小节的任务，我们得到了一个可以工作的key-value数据库。下一小节，我们研究如何用程序跟 TT 通信，把我们抓取的专利都放到 TT 里面。</p>\n"
+    Chapter: Chapter_8
+    number: '1'
+    created_at: '2010-10-28 08:33:04'
+    updated_at: '2010-10-29 08:30:19'
+    deleted_at: null
+  Section_6:
+    is_activated: true
+    title: 将专利文件从存入Key-Value数据库
+    description: "上一节我们创建了一个高效的key-value存储仓库TT，这一节我们研究如何把我们用爬虫爬取到的页面都存放到TT里面。由于我们爬虫是用python语言编写的，我们希望能够同样通过python语言，把爬取的内容放入TT里面。也就是说，我们需要找个TT的python API，或者官方的，或者第三方开源的都可以。\r\n\r\nGoogle搜索“Tokyo Tyrant Python”，我们找到两个开源的项目托管在google code平台上：[python-tokyotyrant](http://code.google.com/p/python-tokyotyrant/)、[pytyrant](http://code.google.com/p/pytyrant/)。从首页上看，python-tokyotyrant的activity为None，也就是没有人更新维护这个项目了。通过查看源代码的更新记录，发现它的最后一次更新是在2008年底，显然它有些out了。通过同样的方式观察pytyrant，它的Acivity是Medium，最后一次更新源代码是在2010年的6月。另外，pytyrant项目现在似乎托管到了github，以至于很分辨到底哪个是最新版本的。后来进行了更多google搜索，我找到了[这个项目](http://pypi.python.org/pypi/pyrant/): pyrant。这个项目来自Python的官网，有非常详尽的文档，我们打算采用它。"
+    html_description: "<p>上一节我们创建了一个高效的key-value存储仓库TT，这一节我们研究如何把我们用爬虫爬取到的页面都存放到TT里面。由于我们爬虫是用python语言编写的，我们希望能够同样通过python语言，把爬取的内容放入TT里面。也就是说，我们需要找个TT的python API，或者官方的，或者第三方开源的都可以。</p>\n\n<p>Google搜索“Tokyo Tyrant Python”，我们找到两个开源的项目托管在google code平台上：<a href=\"http://code.google.com/p/python-tokyotyrant/\">python-tokyotyrant</a>、<a href=\"http://code.google.com/p/pytyrant/\">pytyrant</a>。从首页上看，python-tokyotyrant的activity为None，也就是没有人更新维护这个项目了。通过查看源代码的更新记录，发现它的最后一次更新是在2008年底，显然它有些out了。通过同样的方式观察pytyrant，它的Acivity是Medium，最后一次更新源代码是在2010年的6月。另外，pytyrant项目现在似乎托管到了github，以至于很分辨到底哪个是最新版本的。后来进行了更多google搜索，我找到了<a href=\"http://pypi.python.org/pypi/pyrant/\">这个项目</a>: pyrant。这个项目来自Python的官网，有非常详尽的文档，我们打算采用它。</p>\n"
+    Chapter: Chapter_8
+    number: '2'
+    created_at: '2010-10-29 08:34:16'
+    updated_at: '2010-11-02 08:44:19'
+    deleted_at: null
+Translation:
+  Translation_1:
+    is_activated: true
+    title: 'Practical Symfony, 1.4 version - Doctrine edition'
+    description: "24 tutorials of 1 hour each, that's all it takes to build up a complete and effective application from scratch. Definitely the best way to become a good symfony developer!  \r\n \r\nThe symfony framework has been an Open-Source project for more than four years and has become one of the most popular PHP frameworks thanks to its great features and great documentation.  \r\n  \r\nThis book describes the creation of a web application with the symfony framework, step-by-step from the specifications to the implementation. It is targeted at beginners who want to learn symfony, understand how it works, and also learn about the best web development practices.  \r\n  \r\nThe application to be designed could have been yet another blog engine. But we want to use symfony on a useful project. The goal is to demonstrate that symfony can be used to develop professional applications with style and little effort.  \r\n  \r\nWe will keep the content of the project secret for another day as we already have much for now. However, let's give it a name: Jobeet.  \r\n  \r\nEach day of this book is meant to last between one and two hours, and will be the occasion to learn symfony by coding a real website, from start to finish. Every day, new features will be added to the application, and we'll take advantage of this development to introduce you to new symfony functionalities as well as good practices in symfony web development."
+    html_description: "<p>24 tutorials of 1 hour each, that&#039;s all it takes to build up a complete and effective application from scratch. Definitely the best way to become a good symfony developer!  </p>\n\n<p>The symfony framework has been an Open-Source project for more than four years and has become one of the most popular PHP frameworks thanks to its great features and great documentation.  </p>\n\n<p>This book describes the creation of a web application with the symfony framework, step-by-step from the specifications to the implementation. It is targeted at beginners who want to learn symfony, understand how it works, and also learn about the best web development practices.  </p>\n\n<p>The application to be designed could have been yet another blog engine. But we want to use symfony on a useful project. The goal is to demonstrate that symfony can be used to develop professional applications with style and little effort.  </p>\n\n<p>We will keep the content of the project secret for another day as we already have much for now. However, let&#039;s give it a name: Jobeet.  </p>\n\n<p>Each day of this book is meant to last between one and two hours, and will be the occasion to learn symfony by coding a real website, from start to finish. Every day, new features will be added to the application, and we&#039;ll take advantage of this development to introduce you to new symfony functionalities as well as good practices in symfony web development.</p>\n"
+    User: sfGuardUser_2
+    Edition: Edition_1
+    Language: Language_1
+    url: 'http://www.symfony-project.org/jobeet/1_4/Doctrine/en/'
+    created_at: '2010-10-11 21:10:13'
+    updated_at: '2010-10-13 08:37:13'
+    deleted_at: null
+  Translation_2:
+    is_activated: true
+    title: 'A Gentle Introduction to symfony, 1.4 edition'
+    description: "Read this book to get an overview of symfony. This book introduces you to symfony, showing you how to wield its many features to develop web applications faster and more efficiently, even if you only know a bit of PHP.  \r\n\r\nSymfony is a complete framework designed to optimize the development of web applications by way of several key features. For starters, it separates a web application's business rules, server logic, and presentation views. It contains numerous tools and classes aimed at shortening the development time of a complex web application. Additionally, it automates common tasks so that the developer can focus entirely on the specifics of an application. The end result of these advantages means there is no need to reinvent the wheel every time a new web application is built!  \r\n\r\nSymfony is written entirely in PHP. It has been thoroughly tested in various real-world projects, and is actually in use for high-demand e-business websites. It is compatible with most of the available databases engines, including MySQL, PostgreSQL, Oracle, and Microsoft SQL Server. It runs on *nix and Windows platforms."
+    html_description: "<p>Read this book to get an overview of symfony. This book introduces you to symfony, showing you how to wield its many features to develop web applications faster and more efficiently, even if you only know a bit of PHP.  </p>\n\n<p>Symfony is a complete framework designed to optimize the development of web applications by way of several key features. For starters, it separates a web application&#039;s business rules, server logic, and presentation views. It contains numerous tools and classes aimed at shortening the development time of a complex web application. Additionally, it automates common tasks so that the developer can focus entirely on the specifics of an application. The end result of these advantages means there is no need to reinvent the wheel every time a new web application is built!  </p>\n\n<p>Symfony is written entirely in PHP. It has been thoroughly tested in various real-world projects, and is actually in use for high-demand e-business websites. It is compatible with most of the available databases engines, including MySQL, PostgreSQL, Oracle, and Microsoft SQL Server. It runs on *nix and Windows platforms.</p>\n"
+    User: sfGuardUser_2
+    Edition: Edition_2
+    Language: Language_1
+    url: 'http://www.symfony-project.org/gentle-introduction/1_4/en/'
+    created_at: '2010-10-11 21:10:13'
+    updated_at: '2010-10-13 08:45:58'
+    deleted_at: null
+  Translation_3:
+    is_activated: true
+    title: 'Doctrine ORM for PHP'
+    description: "The Guide to Doctrine for PHP is the main source of documentation for the project. It is a reference book that can be read from start to finish and provides dozens of practice exercises that can be executed by the user.  \r\n\r\nDoctrine is an object relational mapper (ORM) for PHP 5.2.3+ that sits on top of a powerful database abstraction layer (DBAL). One of its key features is the option to write database queries in a proprietary object oriented SQL dialect called Doctrine Query Language (DQL), inspired by Hibernates HQL. This provides developers with a powerful alternative to SQL that maintains flexibility without requiring unnecessary code duplication."
+    html_description: "<p>The Guide to Doctrine for PHP is the main source of documentation for the project. It is a reference book that can be read from start to finish and provides dozens of practice exercises that can be executed by the user.  </p>\n\n<p>Doctrine is an object relational mapper (ORM) for PHP 5.2.3+ that sits on top of a powerful database abstraction layer (DBAL). One of its key features is the option to write database queries in a proprietary object oriented SQL dialect called Doctrine Query Language (DQL), inspired by Hibernates HQL. This provides developers with a powerful alternative to SQL that maintains flexibility without requiring unnecessary code duplication.</p>\n"
+    User: sfGuardUser_2
+    Edition: Edition_3
+    Language: Language_1
+    url: 'http://www.doctrine-project.org/projects/orm/1.2/docs/manual/en'
+    created_at: '2010-10-11 21:10:13'
+    updated_at: '2010-10-13 08:47:28'
+    deleted_at: null
+  Translation_4:
+    is_activated: true
+    title: 'Practical Vertical Search Engine'
+    description: "This book lives at http://bookeet.org/. If you're reading it somewhere else, you may not have the latest version.\r\n\r\nA **vertical search engine**, as distinct from a general Web search engine, focuses on a specific segment of online content. searches a specific industry, topic, type of content (e.g., travel, movies, images, blogs, live events), piece of data, geographical location, and so on. It may help to think of vertical search as a search for a particular niche.  \r\n\r\nThis book introduces the constituent parts of a vertical search engine: the crawler, the indexer and the searcher. It dives into the technical details of  these parts. In the end, this book describes the creation of a vertical search engine, step-by-step from the specifications to the implementation. It is targeted at beginners who want to learn vertical search engine, understand how it works, and also learn about the best development practices and tips."
+    html_description: "<p>This book lives at http://bookeet.org/. If you&#039;re reading it somewhere else, you may not have the latest version.</p>\n\n<p>A <strong>vertical search engine</strong>, as distinct from a general Web search engine, focuses on a specific segment of online content. searches a specific industry, topic, type of content (e.g., travel, movies, images, blogs, live events), piece of data, geographical location, and so on. It may help to think of vertical search as a search for a particular niche.  </p>\n\n<p>This book introduces the constituent parts of a vertical search engine: the crawler, the indexer and the searcher. It dives into the technical details of  these parts. In the end, this book describes the creation of a vertical search engine, step-by-step from the specifications to the implementation. It is targeted at beginners who want to learn vertical search engine, understand how it works, and also learn about the best development practices and tips.</p>\n"
+    User: sfGuardUser_2
+    Edition: Edition_4
+    Language: Language_1
+    url: null
+    created_at: '2010-10-14 08:50:06'
+    updated_at: '2010-10-18 07:09:52'
+    deleted_at: null
+  Translation_5:
+    is_activated: true
+    title: 实战垂直搜索引擎
+    description: "这本书来自[http://bookeet.org](http://bookeet.org)，其它地方的均为转载版本。本书持续更新，在bookeet.org之外的版本很可能不是最新的。  \r\n\r\n创作这本书的目的是想让读者对垂直搜索引擎有一个深入透彻的理解，并且能够动手做出自己的垂直搜索引擎来。以这个目标为指导思想，本书力求做到通俗易懂，详尽具体，避免说太多假、大、空的理论。本书的一大特色是实例非常多，涉及到的语言有python、php、ruby、java等等；涉及到的软件（或技术、框架等）有lucene、solr、sphinxSearch、ruby on rails、django、symfony、zend framework、tomcat、redis、nginx...etc。不管你偏好哪种语言或者技术，总能从本书发现你所感兴趣的内容。\r\n\r\n垂直搜索引擎跟通用搜索引擎的不同之处在于它关注于特定的在线内容。它搜索特定的行业、话题、内容(例如： 旅游、电影、图片、博客、活动等等)、数据、 地理位置等等。为了便于理解可以把垂直搜索引擎看作是对特定利基的搜索。这本书介绍了垂直搜索引擎的组成部分及其实现。这本书既面向那些想要学习垂直搜索引擎，理解垂直搜索引擎工作方式的初学者，同时包含了大量的最佳实践与技巧，适合中高级技术人员学习参考。"
+    html_description: "<p>这本书来自<a href=\"http://bookeet.org\">http://bookeet.org</a>，其它地方的均为转载版本。本书持续更新，在bookeet.org之外的版本很可能不是最新的。  </p>\n\n<p>创作这本书的目的是想让读者对垂直搜索引擎有一个深入透彻的理解，并且能够动手做出自己的垂直搜索引擎来。以这个目标为指导思想，本书力求做到通俗易懂，详尽具体，避免说太多假、大、空的理论。本书的一大特色是实例非常多，涉及到的语言有python、php、ruby、java等等；涉及到的软件（或技术、框架等）有lucene、solr、sphinxSearch、ruby on rails、django、symfony、zend framework、tomcat、redis、nginx...etc。不管你偏好哪种语言或者技术，总能从本书发现你所感兴趣的内容。</p>\n\n<p>垂直搜索引擎跟通用搜索引擎的不同之处在于它关注于特定的在线内容。它搜索特定的行业、话题、内容(例如： 旅游、电影、图片、博客、活动等等)、数据、 地理位置等等。为了便于理解可以把垂直搜索引擎看作是对特定利基的搜索。这本书介绍了垂直搜索引擎的组成部分及其实现。这本书既面向那些想要学习垂直搜索引擎，理解垂直搜索引擎工作方式的初学者，同时包含了大量的最佳实践与技巧，适合中高级技术人员学习参考。</p>\n"
+    User: sfGuardUser_2
+    Edition: Edition_4
+    Language: Language_2
+    url: null
+    created_at: '2010-10-14 21:00:22'
+    updated_at: '2010-10-18 21:23:20'
+    deleted_at: null
+  Translation_6:
+    is_activated: false
+    title: 敏捷桌面程序开发
+    description: "敏捷桌面程序开发，有别于传统的桌面软件开发方式。它强调短、平、快。\r\nAdobe Air  xulRunner   pyqt   wxwidget\r\n\r\n敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发"
+    html_description: "<p>敏捷桌面程序开发，有别于传统的桌面软件开发方式。它强调短、平、快。\nAdobe Air  xulRunner   pyqt   wxwidget</p>\n\n<p>敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发敏捷桌面程序开发</p>\n"
+    User: sfGuardUser_2
+    Edition: Edition_5
+    Language: Language_2
+    url: null
+    created_at: '2010-10-30 22:42:54'
+    updated_at: '2010-10-30 22:44:24'
+    deleted_at: null
+Edition:
+  Edition_1:
+    is_activated: true
+    User: sfGuardUser_2
+    Book: Book_1
+    version: '1.4 version - Doctrine'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+    deleted_at: null
+  Edition_2:
+    is_activated: true
+    User: sfGuardUser_2
+    Book: Book_2
+    version: '1.4 version'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+    deleted_at: null
+  Edition_3:
+    is_activated: true
+    User: sfGuardUser_2
+    Book: Book_3
+    version: '1.2'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+    deleted_at: null
+  Edition_4:
+    is_activated: true
+    User: sfGuardUser_2
+    Book: Book_4
+    version: default
+    created_at: '2010-10-14 08:50:06'
+    updated_at: '2010-10-14 08:50:06'
+    deleted_at: null
+  Edition_5:
+    is_activated: true
+    User: sfGuardUser_2
+    Book: Book_5
+    version: default
+    created_at: '2010-10-30 22:42:54'
+    updated_at: '2010-10-30 22:42:54'
+    deleted_at: null
+Book:
+  Book_1:
+    is_activated: true
+    User: sfGuardUser_2
+    title: 'Practical Symfony'
+    author: 'Fabien Potencier'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+    deleted_at: null
+  Book_2:
+    is_activated: true
+    User: sfGuardUser_2
+    title: 'A Gentle Introduction to symfony'
+    author: 'Fabien Potencier'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+    deleted_at: null
+  Book_3:
+    is_activated: true
+    User: sfGuardUser_2
+    title: 'Doctrine ORM for PHP'
+    author: 'Jonathan H Wage, Roman Borschel, Guilherme Blanco'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+    deleted_at: null
+  Book_4:
+    is_activated: true
+    User: sfGuardUser_2
+    title: 'Practical Vertical Search Engine'
+    author: 'Peter Long'
+    created_at: '2010-10-14 08:50:06'
+    updated_at: '2010-10-14 08:50:06'
+    deleted_at: null
+  Book_5:
+    is_activated: true
+    User: sfGuardUser_2
+    title: 敏捷桌面程序开发
+    author: 'Peter Long'
+    created_at: '2010-10-30 22:42:53'
+    updated_at: '2010-10-30 22:42:53'
+    deleted_at: null
+Language:
+  Language_1:
+    code: en
+    name: English
+    localized_name: English
+    created_at: '2010-10-11 21:10:12'
+  Language_2:
+    code: zh
+    name: Chinese
+    localized_name: 中文
+    created_at: '2010-10-11 21:10:12'
+  Language_3:
+    code: ja
+    name: Japanese
+    localized_name: 日本語
+    created_at: '2010-10-11 21:10:13'
+  Language_4:
+    code: it
+    name: Italian
+    localized_name: Italiano
+    created_at: '2010-10-11 21:10:13'
+  Language_5:
+    code: fr
+    name: French
+    localized_name: Français
+    created_at: '2010-10-11 21:10:13'
+  Language_6:
+    code: es
+    name: Spanish
+    localized_name: Español
+    created_at: '2010-10-11 21:10:13'
+  Language_7:
+    code: ru
+    name: Russian
+    localized_name: Русский
+    created_at: '2010-10-11 21:10:13'
+  Language_8:
+    code: de
+    name: German
+    localized_name: Deutsch
+    created_at: '2010-10-11 21:10:13'
+  Language_9:
+    code: pt
+    name: Portuguese
+    localized_name: Português
+    created_at: '2010-10-11 21:10:13'
+sfGuardRememberKey:
+  sfGuardRememberKey_1:
+    User: sfGuardUser_3
+    remember_key: eqn9ywxvh40gkco0ko0o8sc84w84os0
+    ip_address: 127.0.0.1
+    created_at: '2010-10-18 07:06:37'
+    updated_at: '2010-10-18 07:06:37'
+  sfGuardRememberKey_6:
+    User: sfGuardUser_2
+    remember_key: m5910oxdmb4o4so8ockgok0c88sokco
+    ip_address: 127.0.0.1
+    created_at: '2010-10-28 20:19:58'
+    updated_at: '2010-10-28 20:19:58'
+sfGuardGroup:
+  sfGuardGroup_1:
+    name: user
+    description: 'Registered user group'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+  sfGuardGroup_2:
+    name: moderator
+    description: 'Moderator group'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+sfGuardUser:
+  sfGuardUser_1:
+    first_name: Administrator
+    last_name: Long
+    email_address: peter2win@gmail.com
+    username: admin
+    algorithm: sha1
+    salt: eab44e735c7b0678c39b4f6daf2d7630
+    password: 3d59d7b741421da9ad5dfb28821c98f07e4bdf96
+    is_active: true
+    is_super_admin: true
+    last_login: '2010-10-13 08:34:41'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-13 08:34:41'
+  sfGuardUser_2:
+    first_name: User
+    last_name: Long
+    email_address: mituzhishi@gmail.com
+    username: user
+    algorithm: sha1
+    salt: 200dd52b3a54efd7f4a34b5cee60a090
+    password: a1bc81c9b31cfdf5e5761880170011f5697dcc4c
+    is_active: true
+    is_super_admin: false
+    last_login: '2010-11-02 08:43:49'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-11-02 08:43:49'
+  sfGuardUser_3:
+    first_name: Moderator
+    last_name: Long
+    email_address: 252261703@qq.com
+    username: moderator
+    algorithm: sha1
+    salt: 0473921600c0b9103ce6e768b0161b74
+    password: 5cc6a937aacf568d0f78879b78b604fad917289f
+    is_active: true
+    is_super_admin: false
+    last_login: '2010-10-18 07:06:37'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-18 07:06:37'
+sfGuardGroupPermission:
+  sfGuardGroupPermission_1_1:
+    Group: sfGuardGroup_1
+    Permission: sfGuardPermission_1
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+  sfGuardGroupPermission_2_2:
+    Group: sfGuardGroup_2
+    Permission: sfGuardPermission_2
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+sfGuardUserGroup:
+  sfGuardUserGroup_2_1:
+    User: sfGuardUser_2
+    Group: sfGuardGroup_1
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+  sfGuardUserGroup_3_2:
+    User: sfGuardUser_3
+    Group: sfGuardGroup_2
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+sfGuardPermission:
+  sfGuardPermission_1:
+    name: user
+    description: 'Registered user permission'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+  sfGuardPermission_2:
+    name: moderator
+    description: 'Moderator permission'
+    created_at: '2010-10-11 21:10:12'
+    updated_at: '2010-10-11 21:10:12'
+Chapter:
+  Chapter_1:
+    is_activated: true
+    title: '项目实战: PatentCenter'
+    description: "上一章节我们讲了垂直搜索引擎的基本概念。这一章节让我们去看一个实际的项目吧。事实上，仅仅这一个章节还不足以完成这个项目。在这一章我们主要是做需求分析。定义一下我们的搜索引擎都包含哪些功能点。随着接下来章节的开展，这些功能点将被一一实现，最终我们得到的是一个功能完善的，可以直接部署到生产环境的垂直搜索引擎！\r\n\r\n网络上垂直搜索引擎已经有很多了，比如工作搜索，图书搜索，商品搜索，小说搜索等等。本打算随大流，再做一个工作搜索或者商品搜索做例子；后来想想不如找个相对比较少有人做的话题吧。专利搜索，检索全人类的发明创造专利。我给项目取名字叫做PatentCenter.意思就是the center of patent（专利中心）。\r\n\r\n**PatentCenter功能点定义：**\r\n\r\n1. 自动搜集互联网上的专利材料，包括各个国家的，各种语言的\r\n1. 将专利进行结构化分析。提取到每一个字段。（比如标题、作者、日期等等）\r\n1. 将专利信息索引，并提供索引搜索接口\r\n1. 提供关键字检索功能\r\n1. 提供按字段检索功能\r\n1. 提供按范围检索功能\r\n1. 提供结果过滤功能\r\n1. 提供高级检索功能\r\n1. 提供友好的用户界面\r\n\r\n目前我们还没有任何的专利原始资料，不是吗？“巧妇难为无米之炊”，我们首先要弄到大量的专利。让我们动手做吧！"
+    html_description: "<p>上一章节我们讲了垂直搜索引擎的基本概念。这一章节让我们去看一个实际的项目吧。事实上，仅仅这一个章节还不足以完成这个项目。在这一章我们主要是做需求分析。定义一下我们的搜索引擎都包含哪些功能点。随着接下来章节的开展，这些功能点将被一一实现，最终我们得到的是一个功能完善的，可以直接部署到生产环境的垂直搜索引擎！</p>\n\n<p>网络上垂直搜索引擎已经有很多了，比如工作搜索，图书搜索，商品搜索，小说搜索等等。本打算随大流，再做一个工作搜索或者商品搜索做例子；后来想想不如找个相对比较少有人做的话题吧。专利搜索，检索全人类的发明创造专利。我给项目取名字叫做PatentCenter.意思就是the center of patent（专利中心）。</p>\n\n<p><strong>PatentCenter功能点定义：</strong></p>\n\n<ol>\n<li>自动搜集互联网上的专利材料，包括各个国家的，各种语言的</li>\n<li>将专利进行结构化分析。提取到每一个字段。（比如标题、作者、日期等等）</li>\n<li>将专利信息索引，并提供索引搜索接口</li>\n<li>提供关键字检索功能</li>\n<li>提供按字段检索功能</li>\n<li>提供按范围检索功能</li>\n<li>提供结果过滤功能</li>\n<li>提供高级检索功能</li>\n<li>提供友好的用户界面</li>\n</ol>\n\n<p>目前我们还没有任何的专利原始资料，不是吗？&ldquo;巧妇难为无米之炊&rdquo;，我们首先要弄到大量的专利。让我们动手做吧！</p>\n"
+    Translation: Translation_5
+    number: '3'
+    created_at: '2010-10-15 08:52:06'
+    updated_at: '2010-10-22 22:05:46'
+    deleted_at: null
+  Chapter_2:
+    is_activated: true
+    title: 垂直搜索引擎入门
+    description: "#### 搜索引擎\r\n搜索引擎（search engine）被设计用来在互联网上搜索信息，搜索的结果一般是以列表的形式按照一定顺序呈现出来。 搜索引擎的例子有 [Google](http://google.com)、 [Bing](http://bing.com)、 [Baidu](http://baidu.com)等。\r\n  \r\n  \r\n#### 垂直搜索引擎\r\n垂直搜索引擎是一种特殊的搜索引擎。 它只搜索特定的信息，比如工作搜索引擎、商品搜索引擎、图书搜索引擎、图片搜索引擎等等。之所以叫做“垂直”搜索引擎，正是因为它区别于大而全的web搜索引擎，只在一个垂直的领域进行搜索。\r\n\r\n\r\n#### 垂直搜索引擎的优点\r\n相比搜索引擎，垂直搜索引擎的搜索结果更精准。垂直搜索引擎只关注于一个特定的信息领域，这个领域的信息量是有限的，领域中涉及到的概念之间也有着比较明确的关系，这样就使得提供定制化的搜索、返回最相关的搜索结果成为可能。\r\n\r\n垂直搜索引擎还可以支持用户的一些特定的操作，比如机票搜索引擎可以购买机票，商品搜索引擎可以购买商品，软件搜索引擎可以下载软件等等。传统搜索引擎由于搜索范围过于广泛，很难有针对性地提供这些服务。\r\n\r\n\r\n#### 垂直搜索引擎组成部分\r\n一个垂直搜索引擎包含这些组成部分：\r\n\r\n1. crawler：网络爬虫\r\n1. raw data repository：原始数据仓库\r\n1. information extractor：信息提取器\r\n1. structured data repository：结构化数据仓库\r\n1. indexer：索引器\r\n1. searcher：搜索器\r\n1. user interface：用户界面\r\n\r\n对上述名词不甚理解也不必担心，当前章节只是给读者一个大致的概念。接下来的章节详细深入介绍它们。\r\n\r\n其中crawler、searcher、indexer是一个垂直搜索引擎的核心组成部分：crawler爬取原始数据；indexer生成数据索引；searcher对索引数据进行检索。一般来讲，searcher和indexer是不可或缺的。然而一个垂直搜索引擎未必一定有crawler，比如原始数据已经存在于数据库了，就没必要用爬虫去爬取了。再比如很多网站的内容都是由用户生成的，并不是用爬虫从网络上爬取的。\r\n\r\n一个垂直搜索引擎还可能包含其它非核心组成部分：爬虫从网上爬来的数据叫做原始数据（raw data），存储原始数据的部分叫做raw data repository。information extractor从raw data提取数据，提取到的数据叫做structured data，存储structured data的部分叫做structured data repository。最后，一个垂直搜索引擎最终总是要呈现用户使用的，用来呈现的媒介就是用户界面（user interface）。"
+    html_description: "<h4>搜索引擎</h4>\n\n<p>搜索引擎（search engine）被设计用来在互联网上搜索信息，搜索的结果一般是以列表的形式按照一定顺序呈现出来。 搜索引擎的例子有 <a href=\"http://google.com\">Google</a>、 <a href=\"http://bing.com\">Bing</a>、 <a href=\"http://baidu.com\">Baidu</a>等。</p>\n\n<h4>垂直搜索引擎</h4>\n\n<p>垂直搜索引擎是一种特殊的搜索引擎。 它只搜索特定的信息，比如工作搜索引擎、商品搜索引擎、图书搜索引擎、图片搜索引擎等等。之所以叫做“垂直”搜索引擎，正是因为它区别于大而全的web搜索引擎，只在一个垂直的领域进行搜索。</p>\n\n<h4>垂直搜索引擎的优点</h4>\n\n<p>相比搜索引擎，垂直搜索引擎的搜索结果更精准。垂直搜索引擎只关注于一个特定的信息领域，这个领域的信息量是有限的，领域中涉及到的概念之间也有着比较明确的关系，这样就使得提供定制化的搜索、返回最相关的搜索结果成为可能。</p>\n\n<p>垂直搜索引擎还可以支持用户的一些特定的操作，比如机票搜索引擎可以购买机票，商品搜索引擎可以购买商品，软件搜索引擎可以下载软件等等。传统搜索引擎由于搜索范围过于广泛，很难有针对性地提供这些服务。</p>\n\n<h4>垂直搜索引擎组成部分</h4>\n\n<p>一个垂直搜索引擎包含这些组成部分：</p>\n\n<ol>\n<li>crawler：网络爬虫</li>\n<li>raw data repository：原始数据仓库</li>\n<li>information extractor：信息提取器</li>\n<li>structured data repository：结构化数据仓库</li>\n<li>indexer：索引器</li>\n<li>searcher：搜索器</li>\n<li>user interface：用户界面</li>\n</ol>\n\n<p>对上述名词不甚理解也不必担心，当前章节只是给读者一个大致的概念。接下来的章节详细深入介绍它们。</p>\n\n<p>其中crawler、searcher、indexer是一个垂直搜索引擎的核心组成部分：crawler爬取原始数据；indexer生成数据索引；searcher对索引数据进行检索。一般来讲，searcher和indexer是不可或缺的。然而一个垂直搜索引擎未必一定有crawler，比如原始数据已经存在于数据库了，就没必要用爬虫去爬取了。再比如很多网站的内容都是由用户生成的，并不是用爬虫从网络上爬取的。</p>\n\n<p>一个垂直搜索引擎还可能包含其它非核心组成部分：爬虫从网上爬来的数据叫做原始数据（raw data），存储原始数据的部分叫做raw data repository。information extractor从raw data提取数据，提取到的数据叫做structured data，存储structured data的部分叫做structured data repository。最后，一个垂直搜索引擎最终总是要呈现用户使用的，用来呈现的媒介就是用户界面（user interface）。</p>\n"
+    Translation: Translation_5
+    number: '2'
+    created_at: '2010-10-15 20:55:31'
+    updated_at: '2010-10-25 21:25:00'
+    deleted_at: null
+  Chapter_3:
+    is_activated: true
+    title: 网络爬虫（crawler）
+    description: "网络爬虫（web crawler），简称crawler，又叫做网络蜘蛛（web spider）。crawler本质上是一个按照一定规则浏览互联网的程序。爬虫分为全网爬虫和垂直爬虫。全网爬虫把整个互联网当作它的爬取对象；垂直爬虫则只爬取特定的网页。我们关注的是后者。需要指出的是，爬取信息不是爬虫的唯一作用，比如有的网站利用爬虫来检测网站有没有坏掉的链接。举几个垂直爬虫的例子：工作搜索引擎，需要从job boards、company recruit sites等爬取工作信息；商品搜索引擎需要从ebay.com、taobao.com等网站爬取商品信息。\r\n\r\n值得一提的是：爬虫是一个搜索引擎的重要组成部分，却不是必须的部分。比如一个站内搜索引擎，它的原始信息可以从网站的数据库或者存储磁盘直接获取。再比如我们做PatentCenter，可以考虑向某些机构购买原始数据，他们会以光盘的形式邮寄给我们。还可以要求目标网站为自己提供rss feed，这样我们就可以在第一时间获知内容的更新。在某些情况下这是比爬虫更好的方式，因为爬虫是有自身的局限性的。\r\n\r\n#### 爬虫的局限性\r\n有些内容是固定不变的，这些内容只需要爬取一次就够了，比如中国古代的《论语》，它的内容不会随着时间改变。 对于周期性更新的内容，爬虫也需要周期性重新爬取。这时候爬虫的局限性就体现出来了：时效性不好。尤其是对时效性要求高的内容，比如招聘信息，超过一定时间之后就对受众没有价值了，变成了垃圾信息。有的读者会问：那为什么不让爬虫爬取得快点呢？这是个很好的问题。有两个因素限制了爬虫不能爬得太快：\r\n\r\n1. 一是计算资源限制。假如你的目标页面有10亿，每个爬虫每秒爬取1个页面；要想在一天内全部爬完，需要10000多个爬虫同时工作。这10000多个爬虫是需要占用大量的计算资源的。这里姑且不讨论网络带宽和IO方面的限制。\r\n1. 爬取的礼貌性限制。众多爬虫同时爬取一个网站，很可能会导致该网站压力过大而宕机。即使没那么严重，也会影响目标网站的响应速度。为了礼貌起见，一般推荐每隔8秒爬取目标网站一个页面。对于大型的网站，考虑到内容的数量和对方网站的承受能力，这个时间可以适当缩短。"
+    html_description: "<p>网络爬虫（web crawler），简称crawler，又叫做网络蜘蛛（web spider）。crawler本质上是一个按照一定规则浏览互联网的程序。爬虫分为全网爬虫和垂直爬虫。全网爬虫把整个互联网当作它的爬取对象；垂直爬虫则只爬取特定的网页。我们关注的是后者。需要指出的是，爬取信息不是爬虫的唯一作用，比如有的网站利用爬虫来检测网站有没有坏掉的链接。举几个垂直爬虫的例子：工作搜索引擎，需要从job boards、company recruit sites等爬取工作信息；商品搜索引擎需要从ebay.com、taobao.com等网站爬取商品信息。</p>\n\n<p>值得一提的是：爬虫是一个搜索引擎的重要组成部分，却不是必须的部分。比如一个站内搜索引擎，它的原始信息可以从网站的数据库或者存储磁盘直接获取。再比如我们做PatentCenter，可以考虑向某些机构购买原始数据，他们会以光盘的形式邮寄给我们。还可以要求目标网站为自己提供rss feed，这样我们就可以在第一时间获知内容的更新。在某些情况下这是比爬虫更好的方式，因为爬虫是有自身的局限性的。</p>\n\n<h4>爬虫的局限性</h4>\n\n<p>有些内容是固定不变的，这些内容只需要爬取一次就够了，比如中国古代的《论语》，它的内容不会随着时间改变。 对于周期性更新的内容，爬虫也需要周期性重新爬取。这时候爬虫的局限性就体现出来了：时效性不好。尤其是对时效性要求高的内容，比如招聘信息，超过一定时间之后就对受众没有价值了，变成了垃圾信息。有的读者会问：那为什么不让爬虫爬取得快点呢？这是个很好的问题。有两个因素限制了爬虫不能爬得太快：</p>\n\n<ol>\n<li>一是计算资源限制。假如你的目标页面有10亿，每个爬虫每秒爬取1个页面；要想在一天内全部爬完，需要10000多个爬虫同时工作。这10000多个爬虫是需要占用大量的计算资源的。这里姑且不讨论网络带宽和IO方面的限制。</li>\n<li>爬取的礼貌性限制。众多爬虫同时爬取一个网站，很可能会导致该网站压力过大而宕机。即使没那么严重，也会影响目标网站的响应速度。为了礼貌起见，一般推荐每隔8秒爬取目标网站一个页面。对于大型的网站，考虑到内容的数量和对方网站的承受能力，这个时间可以适当缩短。</li>\n</ol>\n"
+    Translation: Translation_5
+    number: '4'
+    created_at: '2010-10-18 22:04:36'
+    updated_at: '2010-10-22 21:57:24'
+    deleted_at: null
+  Chapter_4:
+    is_activated: true
+    title: 中文版前言
+    description: "笔者日前上国内的当当网和国外的amazon.com上面查找搜索引擎相关的图书，发现它们无一例外走了两类极端：一类是纯理论；另一类是“lucene使用手册”。\r\n\r\n纯理论的图书从头到尾都是在讲理论，从搜索引擎的起源、历史一直讲到数据挖掘，排序算法。在这里没有任何歧视纯理论书籍的意思，那些书不是一般的人能够写出来的，研究理论那么深入值得敬佩。但是笔者是个实用主义者，特别强调学以致用。学习一项知识或者技能，一定要能在现实生活中用到，否则就是浪费时间（除非是在搞学术研究）。太理论化的东西短时间吸收不了，一本书看过脑子里只剩几个名词概念；深入研究吧又不划算，因为自己又不是搞学术的，没那么多时间。\r\n\r\n“lucene使用手册”说的是另一类极端。lucene是一个非常知名的开源的搜索引擎实现。很多书籍就充当了lucene的使用手册，把lucene的api挨个讲了个遍。大家觉得最好的lucene使用手册来自哪里？笔者以为是[lucene的官网](http://lucene.apache.org/)。官网以外的使用手册正确性无法保证，并且未必是最新版本。这样的书买了就是浪费钱。有本书做得很夸张：整本书有将近一半的篇幅都是贴的lucene的源码。lucene是开源的，读者可以自己去网上下载源码。这样的书有粗制滥造骗读者钱的嫌疑。\r\n\r\n总而言之，觉得垂直搜索引擎这块儿缺乏一本指导性，实践性比较强的图书。这本书让读者看了，不光对搜索引擎有了了解，还能自己动手做一个垂直搜索引擎。不过，讲解lucene的api就算了吧，对读者用处不大。更何况，并不是只有lucene才可以做搜索引擎（本书会讲到lucene之外的一些选择）。我想写本书，将垂直搜索引擎介绍给大家；并且通过大量的实际例子，让读者能够了解如何做一个垂直搜索引擎。读完这本书再去写自己的搜索引擎，不会有无从下手的感觉，因为书中的大量实例都可以作为你的参考。\r\n\r\n\r\n\r\n#### 写作风格与约定\r\n本书采用理论与实例穿插的写作风格。先用一个章节讲某个概念或者理论，接下来一章节就有针对性地讲实例。本书的实践部分都围绕一个项目展开，所以不同的实验章节之间有一定的顺序和关联性。不过，笔者尽量做到一个章节做完一件事情，减少章节之间的依赖，有经验的读者可以有选择性地读某些章节。\r\n\r\n实验部分并没有拘泥于某种编程语言或者技术框架。很可能上一个章节使用php，下一个章节使用ruby on rails或者java。笔者这么做有两个原因：\r\n\r\n1. 语言和技术框架只是做项目的工具而已。不同语言和技术框架代表了不同的工具。很多工具都能以相当的代价完成同样的事情。所以，使用什么工具不重要，重要的是做事情的思路与方法。\r\n1. 为了让习惯各种编程语言的人都能从例子中看到自己熟悉的东西。本书是讲垂直搜索引擎的，搜索引擎可以用多种语言实现。读者会发现不同的语言有各自的特点，它们都值得一学。"
+    html_description: "<p>笔者日前上国内的当当网和国外的amazon.com上面查找搜索引擎相关的图书，发现它们无一例外走了两类极端：一类是纯理论；另一类是&ldquo;lucene使用手册&rdquo;。</p>\n\n<p>纯理论的图书从头到尾都是在讲理论，从搜索引擎的起源、历史一直讲到数据挖掘，排序算法。在这里没有任何歧视纯理论书籍的意思，那些书不是一般的人能够写出来的，研究理论那么深入值得敬佩。但是笔者是个实用主义者，特别强调学以致用。学习一项知识或者技能，一定要能在现实生活中用到，否则就是浪费时间（除非是在搞学术研究）。太理论化的东西短时间吸收不了，一本书看过脑子里只剩几个名词概念；深入研究吧又不划算，因为自己又不是搞学术的，没那么多时间。</p>\n\n<p>&ldquo;lucene使用手册&rdquo;说的是另一类极端。lucene是一个非常知名的开源的搜索引擎实现。很多书籍就充当了lucene的使用手册，把lucene的api挨个讲了个遍。大家觉得最好的lucene使用手册来自哪里？笔者以为是<a href=\"http://lucene.apache.org/\">lucene的官网</a>。官网以外的使用手册正确性无法保证，并且未必是最新版本。这样的书买了就是浪费钱。有本书做得很夸张：整本书有将近一半的篇幅都是贴的lucene的源码。lucene是开源的，读者可以自己去网上下载源码。这样的书有粗制滥造骗读者钱的嫌疑。</p>\n\n<p>总而言之，觉得垂直搜索引擎这块儿缺乏一本指导性，实践性比较强的图书。这本书让读者看了，不光对搜索引擎有了了解，还能自己动手做一个垂直搜索引擎。不过，讲解lucene的api就算了吧，对读者用处不大。更何况，并不是只有lucene才可以做搜索引擎（本书会讲到lucene之外的一些选择）。我想写本书，将垂直搜索引擎介绍给大家；并且通过大量的实际例子，让读者能够了解如何做一个垂直搜索引擎。读完这本书再去写自己的搜索引擎，不会有无从下手的感觉，因为书中的大量实例都可以作为你的参考。</p>\n\n<h4>写作风格与约定</h4>\n\n<p>本书采用理论与实例穿插的写作风格。先用一个章节讲某个概念或者理论，接下来一章节就有针对性地讲实例。本书的实践部分都围绕一个项目展开，所以不同的实验章节之间有一定的顺序和关联性。不过，笔者尽量做到一个章节做完一件事情，减少章节之间的依赖，有经验的读者可以有选择性地读某些章节。</p>\n\n<p>实验部分并没有拘泥于某种编程语言或者技术框架。很可能上一个章节使用php，下一个章节使用ruby on rails或者java。笔者这么做有两个原因：</p>\n\n<ol>\n<li>语言和技术框架只是做项目的工具而已。不同语言和技术框架代表了不同的工具。很多工具都能以相当的代价完成同样的事情。所以，使用什么工具不重要，重要的是做事情的思路与方法。</li>\n<li>为了让习惯各种编程语言的人都能从例子中看到自己熟悉的东西。本书是讲垂直搜索引擎的，搜索引擎可以用多种语言实现。读者会发现不同的语言有各自的特点，它们都值得一学。</li>\n</ol>\n"
+    Translation: Translation_5
+    number: '1'
+    created_at: '2010-10-18 22:46:48'
+    updated_at: '2010-10-19 07:49:44'
+    deleted_at: null
+  Chapter_5:
+    is_activated: true
+    title: 项目实战：PatentCenter爬虫（python语言实现）
+    description: "首先必须搞清楚我们要从哪里获取专利信息。每个国家都可能会有自己的专利局。但未必所有的专利局都会把专利信息公布到网上。经过我在网上搜索研究，得知最著名的就数美国的专利商标局了，并且它提供免费的专利浏览。官方网站在这里：[Patent Full-Text Databases](http://patft.uspto.gov/)（简称patft）。就是它了！\r\n\r\n这里我们要做一些基本的研究工作。针对每个网站写爬虫的时候都要或多或少做些研究工作。这些研究工作是为了给爬虫探路。先人工地去浏览下目标页面，然后爬虫模拟人工的方式去访问相应的页面。在patft的[首页](http://patft.uspto.gov/)；点击[Number Search](http://patft.uspto.gov/netahtml/PTO/srchnum.htm)链接；然后搜索“5555555”。刚刚一系列操作的目的是为了搜索出编号为5555555的专利。 这是当前的页面链接：\r\n\r\n	http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=5555555.PN.&OS=PN/5555555&RS=PN/5555555\r\n\r\n研究工作做到这里，基本足够了。我们可以写一个爬虫程序，这个爬虫首先访问patft的首页，接着点击Number Search链接，然后在出现的页面填入专利号，并点击搜索按钮。得到的页面就是最终的专利页了。爬虫程序只要保存最终页面就大功告成了。好吧，就这样吧，开始动手做吧。\r\n\r\n等一等！我发现最终页面的链接里面包含了专利号（5555555），并且这个号码出现了三次。试着把专利号改为5555556看会怎样。更新后的url是：\r\n\r\n	http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=5555556.PN.&OS=PN/5555556&RS=PN/5555556\r\n\r\n打开链接后发现正是专利5555556的最终页面，正是我们想要的效果。那么我们的爬虫就可以大大简化了：只要依次根据专利号修改链接，并访问那个链接保存最终页面就可以了。\r\n\r\n我们来总结下上面的进行爬虫研究工作的过程：\r\n\r\n1. 人工的方式浏览到最终的结果页\r\n1. 爬虫可以模拟人工的方式得到的最终的结果页\r\n1. 总结研究，看爬虫获取最终页面的方式是否可以简化\r\n1. 得出最终爬虫爬取方案\r\n\r\n获取爬虫的爬取方案往往比编写爬虫代码还困难。我们当前遇到的情况是最简单的情况之一了。复杂的情况比如说列表页翻页，Post参数，页面javascript处理，网站需要登录等等。当前不需要太担心这些复杂情况，我们会有专门的一个章节介绍疑难的页面的爬取。并且还会教大家一招“杀手锏”——此招一出，爬虫必定一马平川，屡试不爽！\r\n\r\n好了，到了代码时间了。我们这个例子的爬虫是非常简单的。它的原理就是利用代码来发出http get请求，获取最终专利页的内容并保存在硬盘上。我们讲分小节逐步讲解代码，请继续阅读本章第一小节：“最简单的爬虫”。"
+    html_description: "<p>首先必须搞清楚我们要从哪里获取专利信息。每个国家都可能会有自己的专利局。但未必所有的专利局都会把专利信息公布到网上。经过我在网上搜索研究，得知最著名的就数美国的专利商标局了，并且它提供免费的专利浏览。官方网站在这里：<a href=\"http://patft.uspto.gov/\">Patent Full-Text Databases</a>（简称patft）。就是它了！</p>\n\n<p>这里我们要做一些基本的研究工作。针对每个网站写爬虫的时候都要或多或少做些研究工作。这些研究工作是为了给爬虫探路。先人工地去浏览下目标页面，然后爬虫模拟人工的方式去访问相应的页面。在patft的<a href=\"http://patft.uspto.gov/\">首页</a>；点击<a href=\"http://patft.uspto.gov/netahtml/PTO/srchnum.htm\">Number Search</a>链接；然后搜索“5555555”。刚刚一系列操作的目的是为了搜索出编号为5555555的专利。 这是当前的页面链接：</p>\n\n<pre><code>http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=5555555.PN.&amp;OS=PN/5555555&amp;RS=PN/5555555\n</code></pre>\n\n<p>研究工作做到这里，基本足够了。我们可以写一个爬虫程序，这个爬虫首先访问patft的首页，接着点击Number Search链接，然后在出现的页面填入专利号，并点击搜索按钮。得到的页面就是最终的专利页了。爬虫程序只要保存最终页面就大功告成了。好吧，就这样吧，开始动手做吧。</p>\n\n<p>等一等！我发现最终页面的链接里面包含了专利号（5555555），并且这个号码出现了三次。试着把专利号改为5555556看会怎样。更新后的url是：</p>\n\n<pre><code>http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=/netahtml/PTO/srchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=5555556.PN.&amp;OS=PN/5555556&amp;RS=PN/5555556\n</code></pre>\n\n<p>打开链接后发现正是专利5555556的最终页面，正是我们想要的效果。那么我们的爬虫就可以大大简化了：只要依次根据专利号修改链接，并访问那个链接保存最终页面就可以了。</p>\n\n<p>我们来总结下上面的进行爬虫研究工作的过程：</p>\n\n<ol>\n<li>人工的方式浏览到最终的结果页</li>\n<li>爬虫可以模拟人工的方式得到的最终的结果页</li>\n<li>总结研究，看爬虫获取最终页面的方式是否可以简化</li>\n<li>得出最终爬虫爬取方案</li>\n</ol>\n\n<p>获取爬虫的爬取方案往往比编写爬虫代码还困难。我们当前遇到的情况是最简单的情况之一了。复杂的情况比如说列表页翻页，Post参数，页面javascript处理，网站需要登录等等。当前不需要太担心这些复杂情况，我们会有专门的一个章节介绍疑难的页面的爬取。并且还会教大家一招“杀手锏”——此招一出，爬虫必定一马平川，屡试不爽！</p>\n\n<p>好了，到了代码时间了。我们这个例子的爬虫是非常简单的。它的原理就是利用代码来发出http get请求，获取最终专利页的内容并保存在硬盘上。我们讲分小节逐步讲解代码，请继续阅读本章第一小节：“最简单的爬虫”。</p>\n"
+    Translation: Translation_5
+    number: '5'
+    created_at: '2010-10-22 22:05:30'
+    updated_at: '2010-10-25 22:18:12'
+    deleted_at: null
+  Chapter_6:
+    is_activated: true
+    title: '附录1：在 Netbeans IDE 中构建开发环境'
+    description: "NetBeans IDE 是一个为软件开发者提供的自由、开源的集成开发环境。您可以从中获得您所需要的所有工具，来创建专业的桌面应用程序、企业应用程序、web 和移动应用程序。此 IDE 可以在多种平台上运行，包括 Windows、Linux、Mac OS X 以及 Solaris；它易于安装且非常方便使用。\r\n\r\nNetbeans 起初只支持 Java 语言，后来逐渐加入了对 C/C++、PHP、ruby、Python 等的支持。在 Netbeans 里面可以很方便地编辑各种文件，比如xml、javascript、css等等，这是笔者喜欢它的一个重要原因：一个 IDE 就能搞定一切开发任务。\r\n\r\nIDE 领域除了 NetBeans 还有很多其它的选择，比如 eclipse、emacs、textmate等。选择哪个完全取决于个人偏好。网上很多对比各种 IDE 优劣的帖子，可以参考下。一般来讲，网友评价比较高的那几款 IDE，随便哪一款都能满足我们的需求。本书中的例子统一采用 Netbeans IDE 编写实现。接下来介绍如何在NetBeans中构建开发环境。"
+    html_description: "<p>NetBeans IDE 是一个为软件开发者提供的自由、开源的集成开发环境。您可以从中获得您所需要的所有工具，来创建专业的桌面应用程序、企业应用程序、web 和移动应用程序。此 IDE 可以在多种平台上运行，包括 Windows、Linux、Mac OS X 以及 Solaris；它易于安装且非常方便使用。</p>\n\n<p>Netbeans 起初只支持 Java 语言，后来逐渐加入了对 C/C++、PHP、ruby、Python 等的支持。在 Netbeans 里面可以很方便地编辑各种文件，比如xml、javascript、css等等，这是笔者喜欢它的一个重要原因：一个 IDE 就能搞定一切开发任务。</p>\n\n<p>IDE 领域除了 NetBeans 还有很多其它的选择，比如 eclipse、emacs、textmate等。选择哪个完全取决于个人偏好。网上很多对比各种 IDE 优劣的帖子，可以参考下。一般来讲，网友评价比较高的那几款 IDE，随便哪一款都能满足我们的需求。本书中的例子统一采用 Netbeans IDE 编写实现。接下来介绍如何在NetBeans中构建开发环境。</p>\n"
+    Translation: Translation_5
+    number: '100'
+    created_at: '2010-10-24 09:08:40'
+    updated_at: '2010-10-24 09:08:40'
+    deleted_at: null
+  Chapter_7:
+    is_activated: true
+    title: '原始数据仓库（raw data repository）'
+    description: "上一章我们编写了一个功能完善的爬虫程序。最后却遇到了一个问题：大量的文件导致文件系统变慢。这一章讲解的原始数据仓库可以解决这个问题。原始数据仓库（raw data repository），顾名思义，就是存储原始数据的仓库。与之对应的还有结构化数据仓库（structured data repository），专门用来存储结构化数据的。从原始数据变为结构化数据需要信息提取器（Information Extractor），是我们下一章要讲的内容。接下来让我们一起思考一个问题：我们需要什么样的原始数据仓库呢？\r\n\r\n我们的需求其实很简单：首先，数据仓库要能支撑千万级的数据量；其次，数据仓库的存放和读取速度都要非常快。我们存储的数据呢，就是专利的网页文本。这样的话似乎也不需要什么关系型数据库了。关系型数据库的好处在我们这里体现不出来。试想下，假如使用关系型数据库，我们将只有一个表，根本谈不上表和表之间的关系。这时候NoSQL数据库似乎是个更好的选择。NoSQL数据库，说得直白点就是不用SQL的数据库。比如Amazon的simpleDB就是NoSQL的数据库，还有MongoDB、counchDB、Redis、Tokyo Cabinet等等也都是NoSQL的数据库。最近NoSQL的数据库很火，也是有原因的：首先是接口简单，比复杂的SQL简单很多，比如很多NoSQL都支持一种简单的Key-Value数据存储；其次是速度快，因为简单，所以可以更快；再次就是节省资源，一般来讲NoSQL数据库比SQL数据库要节省内存和CPU。\r\n\r\n在这里笔者分享一点使用关系型数据库的一些比较痛苦的经历。如果再让我选择，我一定会选择使用NoSQL数据库（当然存储一些关联性比较强的数据我们还是离不开关系型数据库的。所以要就事论事，不能一概而论）。当时大概有1000多万条文本数据，平均每条数据30K左右。一开始采用mysql数据库，发现数据量超过100万，写入的性能开始严重下降，并且cpu和内存的占用都比较高。后来无奈切换到了大名鼎鼎的Postgresql，最终成功地把1000万条数据保存了起来。这说明Postgresql还是相当优秀的。不过它的维护过程很让人痛苦，要定期运行命令对其进行vacuum和其它的一些操作（具体记不太清楚了）。总之要是不维护的话，1000万数据肯定是写不进去的；并且维护的时候一条命令执行很长时间，占用cpu和内存都很高，好几次我都以为数据库卡死不能用了。\r\n\r\n总而言之，要根据实际情况选取我们的数据仓库。经过综合考虑我们觉得我们应该去找一款性能优秀的NoSQL数据库。让我们一起去探索下吧。"
+    html_description: "<p>上一章我们编写了一个功能完善的爬虫程序。最后却遇到了一个问题：大量的文件导致文件系统变慢。这一章讲解的原始数据仓库可以解决这个问题。原始数据仓库（raw data repository），顾名思义，就是存储原始数据的仓库。与之对应的还有结构化数据仓库（structured data repository），专门用来存储结构化数据的。从原始数据变为结构化数据需要信息提取器（Information Extractor），是我们下一章要讲的内容。接下来让我们一起思考一个问题：我们需要什么样的原始数据仓库呢？</p>\n\n<p>我们的需求其实很简单：首先，数据仓库要能支撑千万级的数据量；其次，数据仓库的存放和读取速度都要非常快。我们存储的数据呢，就是专利的网页文本。这样的话似乎也不需要什么关系型数据库了。关系型数据库的好处在我们这里体现不出来。试想下，假如使用关系型数据库，我们将只有一个表，根本谈不上表和表之间的关系。这时候NoSQL数据库似乎是个更好的选择。NoSQL数据库，说得直白点就是不用SQL的数据库。比如Amazon的simpleDB就是NoSQL的数据库，还有MongoDB、counchDB、Redis、Tokyo Cabinet等等也都是NoSQL的数据库。最近NoSQL的数据库很火，也是有原因的：首先是接口简单，比复杂的SQL简单很多，比如很多NoSQL都支持一种简单的Key-Value数据存储；其次是速度快，因为简单，所以可以更快；再次就是节省资源，一般来讲NoSQL数据库比SQL数据库要节省内存和CPU。</p>\n\n<p>在这里笔者分享一点使用关系型数据库的一些比较痛苦的经历。如果再让我选择，我一定会选择使用NoSQL数据库（当然存储一些关联性比较强的数据我们还是离不开关系型数据库的。所以要就事论事，不能一概而论）。当时大概有1000多万条文本数据，平均每条数据30K左右。一开始采用mysql数据库，发现数据量超过100万，写入的性能开始严重下降，并且cpu和内存的占用都比较高。后来无奈切换到了大名鼎鼎的Postgresql，最终成功地把1000万条数据保存了起来。这说明Postgresql还是相当优秀的。不过它的维护过程很让人痛苦，要定期运行命令对其进行vacuum和其它的一些操作（具体记不太清楚了）。总之要是不维护的话，1000万数据肯定是写不进去的；并且维护的时候一条命令执行很长时间，占用cpu和内存都很高，好几次我都以为数据库卡死不能用了。</p>\n\n<p>总而言之，要根据实际情况选取我们的数据仓库。经过综合考虑我们觉得我们应该去找一款性能优秀的NoSQL数据库。让我们一起去探索下吧。</p>\n"
+    Translation: Translation_5
+    number: '6'
+    created_at: '2010-10-25 21:44:58'
+    updated_at: '2010-10-27 21:45:46'
+    deleted_at: null
+  Chapter_8:
+    is_activated: true
+    title: '项目实战：PatentCenter原始数据仓库（Tokyo Tyrant）'
+    description: "我们决定了要去寻找一款优秀的NoSQL数据库做我们的搜索引擎的原始数据仓库。那么候选列表可能有很长。在这里我觉得很为难：到底要考虑哪些候选的NoSQL数据库呢？如果把互联网上的开源NoSQL全部列出来恐怕得有几十个之多（并且数量还在不短增加中）。参考 [NoSQl on Wikipedia](http://en.wikipedia.org/wiki/Nosql) 查看当前的一个相对比较完整的列表。\r\n\r\n笔者以前有个习惯（不是很好的习惯），在每决定采用一项新的技术之后，都会到互联网上去查找都有哪些可用的产品或解决方案。在Google上执行大量的搜索，比较大量的文章和博客对这些可用的产品或者解决方案进行对比，试图找出“最好”的那个。很多时候这是很难出结果的，因为不同的产品和解决方案的特点和适用范围不同，正所谓寸有所长，尺有所短。不同的人偏好不同的产品，他们在互联网上发表的看法和评论未必都是客观的。这样比较来比较去，搞得头晕眼花，甚至都不想去做新的项目了。互联网最大的优点是它有海量的免费信息，然而这也是它最大的缺点。不要被纷杂的信息扰乱了心智。适当的时候要认为自己已经找到了最好的信息，并把它消化掉，而不是把时间都花费在寻找最好的信息上。\r\n\r\n笔者经过相对还算充分的调查研究，发现四个NoSQL数据库看起来很不错：redis，counchDB，MongoDB，Tokyo Cabinet（不必跟我争论，没有最好，只有更好，我们只要找到足够好的就行了）。应该说他们四个在某些情况下都是可以独当一面的。不过我根据项目的实际情况应用了一下排除法：redis的数据量不能超过内存，无法满足我们千万级数据的要求；counchDB在四个里面据说是最慢的，我们需要更快的其它选择；MongoDB在32位系统上只支持2G多一点的数据文件大小，也没办法满足我们千万级的数据量要求（并不是每个人都有64位系统的）。剩下的只有Tokyo Cabinet了。Tokyo Cabinet（以下简称TC） 是日本人 平林幹雄 开发的一款 Key-Value 键值数据库。Tokyo Tyrant（以下简称TT） 是由同一作者开发的TC数据库网络接口。它拥有自己的协议，并支持Memcached兼容协议，也可以通过HTTP协议进行数据交换。我们接下来对TC的操作其实都是通过TT进行的。"
+    html_description: "<p>我们决定了要去寻找一款优秀的NoSQL数据库做我们的搜索引擎的原始数据仓库。那么候选列表可能有很长。在这里我觉得很为难：到底要考虑哪些候选的NoSQL数据库呢？如果把互联网上的开源NoSQL全部列出来恐怕得有几十个之多（并且数量还在不短增加中）。参考 <a href=\"http://en.wikipedia.org/wiki/Nosql\">NoSQl on Wikipedia</a> 查看当前的一个相对比较完整的列表。</p>\n\n<p>笔者以前有个习惯（不是很好的习惯），在每决定采用一项新的技术之后，都会到互联网上去查找都有哪些可用的产品或解决方案。在Google上执行大量的搜索，比较大量的文章和博客对这些可用的产品或者解决方案进行对比，试图找出“最好”的那个。很多时候这是很难出结果的，因为不同的产品和解决方案的特点和适用范围不同，正所谓寸有所长，尺有所短。不同的人偏好不同的产品，他们在互联网上发表的看法和评论未必都是客观的。这样比较来比较去，搞得头晕眼花，甚至都不想去做新的项目了。互联网最大的优点是它有海量的免费信息，然而这也是它最大的缺点。不要被纷杂的信息扰乱了心智。适当的时候要认为自己已经找到了最好的信息，并把它消化掉，而不是把时间都花费在寻找最好的信息上。</p>\n\n<p>笔者经过相对还算充分的调查研究，发现四个NoSQL数据库看起来很不错：redis，counchDB，MongoDB，Tokyo Cabinet（不必跟我争论，没有最好，只有更好，我们只要找到足够好的就行了）。应该说他们四个在某些情况下都是可以独当一面的。不过我根据项目的实际情况应用了一下排除法：redis的数据量不能超过内存，无法满足我们千万级数据的要求；counchDB在四个里面据说是最慢的，我们需要更快的其它选择；MongoDB在32位系统上只支持2G多一点的数据文件大小，也没办法满足我们千万级的数据量要求（并不是每个人都有64位系统的）。剩下的只有Tokyo Cabinet了。Tokyo Cabinet（以下简称TC） 是日本人 平林幹雄 开发的一款 Key-Value 键值数据库。Tokyo Tyrant（以下简称TT） 是由同一作者开发的TC数据库网络接口。它拥有自己的协议，并支持Memcached兼容协议，也可以通过HTTP协议进行数据交换。我们接下来对TC的操作其实都是通过TT进行的。</p>\n"
+    Translation: Translation_5
+    number: '7'
+    created_at: '2010-10-27 22:53:58'
+    updated_at: '2010-10-28 08:34:56'
+    deleted_at: null
+  Chapter_9:
+    is_activated: true
+    title: 'Adobe Air'
+    description: 'Adobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe Air'
+    html_description: "<p>Adobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe AirAdobe Air</p>\n"
+    Translation: Translation_6
+    number: '1'
+    created_at: '2010-10-30 22:44:55'
+    updated_at: '2010-10-30 22:44:55'
+    deleted_at: null

@@ -1,0 +1,33 @@
+Never forget the "DRY" principle  do refactoring
+================================
+
+searching
+I18N
+tags
+sluggable
+
+pagination
+
+user register interest for a book
+openid: http://www.janrain.com/openid-enabled
+
+
+add unit tests and functional tests code.
+
+pay attention to saas, such the ones integrated into netbeans and the ones provided by zend.
+
+anti-spam (email activation of user account)
+
+cron job to delete empty books and editions(those with no translations) (then no need of moderation for them)
+
+SEO: title h1 meta-keywords meta-description sitemap
+
+user could leave commets.
+
+upload and use images.
+
+display source code highlight
+
+user profile page; change user profile: first name, last name, password, email...etc.
+
+CSRF detecetd even session not timeout

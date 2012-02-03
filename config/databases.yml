@@ -1,0 +1,16 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/07-Databases
+
+test:
+  doctrine:
+    param:
+      dsn:      mysql:host=localhost;dbname=bookeet_test
+
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=localhost;dbname=bookeet
+      username: root
+      password: 123456
+      encoding: UTF8

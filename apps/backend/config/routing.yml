@@ -1,0 +1,49 @@
+book:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Book
+    module:               book
+    prefix_path:          /book
+    column:               id
+    with_wildcard_routes: true
+
+edition:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Edition
+    module:               edition
+    prefix_path:          /edition
+    column:               id
+    with_wildcard_routes: true
+
+translation:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Translation
+    module:               translation
+    prefix_path:          /translation
+    column:               id
+    with_wildcard_routes: true
+
+language:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Language
+    module:               language
+    prefix_path:          /language
+    column:               id
+    with_wildcard_routes: true
+
+# default rules
+homepage:
+  url:   /
+  param: { module: book, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

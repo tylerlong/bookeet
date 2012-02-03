@@ -1,0 +1,37 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/04-Settings
+
+prod:
+  .settings:
+    no_script_name:         true
+    logging_enabled:        false
+
+dev:
+  .settings:
+    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
+    web_debug:              true
+    cache:                  false
+    no_script_name:         true
+    etag:                   false
+
+test:
+  .settings:
+    error_reporting:        <?php echo ((E_ALL | E_STRICT) ^ E_NOTICE)."\n" ?>
+    cache:                  false
+    web_debug:              false
+    no_script_name:         false
+    etag:                   false
+
+all:
+  .settings:
+    timeout:                36000
+    csrf_secret:            420cd20078353bd53e8c28440e04e07f51b1043b
+    escaping_strategy:      false
+    escaping_method:        ESC_SPECIALCHARS
+    use_database:           true
+    enabled_modules:      [ default, sfGuardAuth, sfGuardGroup, sfGuardPermission, sfGuardUser, sfGuardRegister, sfGuardForgotPassword ]
+  .actions:
+    login_module:           sfGuardAuth
+    login_action:           signin
+    secure_module:          sfGuardAuth
+    secure_action:          secure

@@ -1,0 +1,5 @@
+markdownPreviewSuccess:
+  layout: markdown_preview_layout
+
+jsTranslateSuccess:
+  javascripts: [ jquery-1.4.2.min.js, translate/jquery.translate-1.4.7-debug-all.js ]

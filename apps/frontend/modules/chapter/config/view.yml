@@ -1,0 +1,7 @@
+newSuccess:
+  stylesheets: [ markitup/skin.css, markitup/markdown.css ]
+  javascripts: [ jquery-1.4.2.min.js, markitup/jquery.markitup.pack.js, markitup/markdown.js ]
+
+editSuccess:
+  stylesheets: [ markitup/skin.css, markitup/markdown.css ]
+  javascripts: [ jquery-1.4.2.min.js, markitup/jquery.markitup.pack.js, markitup/markdown.js ]

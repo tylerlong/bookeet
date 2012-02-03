@@ -1,0 +1,26 @@
+div.menu
+{
+  margin-top: 1px;
+  margin-bottom: 20px;
+  padding: 8px;
+  padding-left: 20px;
+  border-bottom: 1px solid #aaa;
+  background-color: black;
+  
+}
+
+div.menu li
+{
+  margin-right: 15px;
+  display: inline;
+  color: white;
+}
+
+div.menu li a{
+  font-weight: bold;
+  color: white;
+}
+
+div.menu li a:hover{
+  color: red;
+}

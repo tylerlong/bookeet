@@ -1,0 +1,15 @@
+# Project files
+/nbproject/*
+/cache/*
+/log/*
+/web/*_dev.php
+/web/uploads/*
+error_log
+/web/error_log
+/web/.htaccess
+/config/databases.yml
+
+
+# SCM files
+.hg
+.hgignore
